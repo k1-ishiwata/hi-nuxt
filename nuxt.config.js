@@ -1,18 +1,9 @@
 
 export default {
-  /*
-  ** Nuxt rendering mode
-  ** See https://nuxtjs.org/api/configuration-mode
-  */
   mode: 'universal',
+  // target: 'server',
   /*
-  ** Nuxt target
-  ** See https://nuxtjs.org/api/configuration-target
-  */
-  target: 'server',
-  /*
-  ** Headers of the page
-  ** See https://nuxtjs.org/api/configuration-head
+  ** headタグ、OGPなどサイト全体の共通設定
   */
   head: {
     title: process.env.npm_package_name || '',
@@ -26,13 +17,16 @@ export default {
     ]
   },
   /*
-  ** Global CSS
+  ** プログレスバーの設定
+  */
+  loading: { color: '#fff' },
+  /*
+  ** グローバルCSSの定義
   */
   css: [
   ],
   /*
-  ** Plugins to load before mounting the App
-  ** https://nuxtjs.org/guide/plugins
+  ** プラグインの定義
   */
   plugins: [
   ],
@@ -42,10 +36,9 @@ export default {
   */
   components: true,
   /*
-  ** Nuxt.js dev-modules
+  ** ビルドモジュールの定義
   */
   buildModules: [
-    // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
   ],
   /*
@@ -75,8 +68,7 @@ export default {
     ]
   },
   /*
-  ** Build configuration
-  ** See https://nuxtjs.org/api/configuration-build/
+  ** ビルド時の設定
   */
   build: {
   }

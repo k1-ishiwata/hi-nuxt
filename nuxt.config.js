@@ -49,10 +49,31 @@ export default {
     '@nuxtjs/tailwindcss',
   ],
   /*
-  ** Nuxt.js modules
+  ** モジュールの定義
   */
   modules: [
+    'nuxt-purgecss',
   ],
+  /*
+  ** CSS圧縮の設定
+  */
+  purgeCSS: {
+    enabled: ({ isDev, isClient }) => (!isDev && isClient),
+    paths: [
+      'components/**/*.vue',
+      'layouts/**/*.vue',
+      'pages/**/*.vue',
+      'plugins/**/*.js'
+    ],
+    styleExtensions: ['.css'],
+    whitelist: ['body', 'html', 'nuxt-progress'],
+    extractors: [
+      {
+        extractor: content => content.match(/[A-z0-9-:\\/]+/g) || [],
+        extensions: ['html', 'vue', 'js']
+      }
+    ]
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/

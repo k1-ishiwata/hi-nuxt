@@ -4,9 +4,9 @@
       <AppButton>
         <span slot="name">ふつーのボタン</span>
       </AppButton>
-      <AppAccentButton>
+      <!-- <AppAccentButton>
         <span slot="name">やったね！</span>
-      </AppAccentButton>
+      </AppAccentButton> -->
       <p>
         なにがでるかな
       </p>

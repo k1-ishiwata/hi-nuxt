@@ -59,6 +59,7 @@ module.exports = {
         lh18: '18px',
         lh20: '20px',
         lh25: '25px',
+        lh30: '30px',
       },
       borderWidth: {
         1: '1px',

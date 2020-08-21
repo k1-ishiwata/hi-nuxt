@@ -18,7 +18,7 @@ export default {
   font-size: theme('fontSize.fz14');
   line-height: theme('lineHeight.lh14');
   border-color: theme('colors.button-base');
-  border-radius: 50%;
+  /* border-radius: 50%; */
   @apply flex items-center justify-center px-10 border border-solid bg-white cursor-pointer;
 }
 </style>

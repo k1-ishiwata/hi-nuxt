@@ -35,7 +35,7 @@
              v-for="area in areaList"
              :key="area.id"
           >
-            <FooterAreaList>
+            <AreaList>
               <li slot="index">
                 <FooterAreaIndex :isColon="isColon">
                   <template slot="colon">
@@ -51,7 +51,7 @@
                   {{ prefecture.name }}
                 </a>
               </li>
-            </FooterAreaList>
+            </AreaList>
           </div>
       </FooterContentsList>
       <hr>
@@ -63,7 +63,7 @@
             </template>
           </FooterSearchIndex>
           <template v-for="area in areaList">
-            <FooterAreaList v-for="prefecture in area.prefecture"
+            <AreaList v-for="prefecture in area.prefecture"
                             :key="prefecture.id"
             >
               <li slot="index"
@@ -83,7 +83,7 @@
                   {{ city.name }}
                 </a>
               </li>
-            </FooterAreaList>
+            </AreaList>
           </template>
         </div>
         <div slot="contents">
@@ -100,7 +100,7 @@
                  :key="area.id"
                  class="item"
             >
-              <FooterAreaList v-for="prefecture in area.prefecture"
+              <AreaList v-for="prefecture in area.prefecture"
                               :key="prefecture.id"
               >
                 <li slot="index">
@@ -118,7 +118,7 @@
                     {{ city.name }}
                   </a>
                 </li>
-              </FooterAreaList>
+              </AreaList>
             </div>
           </div>
         </div>
@@ -132,10 +132,10 @@
 
 <script>
 import FooterGuideList from '~/components/globals/FooterGuideList.vue'
-import FooterAreaList from '~/components/globals/FooterAreaList.vue'
 import FooterAreaIndex from '~/components/globals/FooterAreaIndex.vue'
 import FooterContentsList from '~/components/globals/FooterContentsList.vue'
 import FooterSearchIndex from '~/components/globals/FooterSearchIndex.vue'
+import AreaList from '~/components/globals/AreaList.vue'
 import AppAccentButton from '~/components/parts/AppAccentButton.vue'
 import IconArrow from '~/components/icons/IconArrow.vue'
 
@@ -143,10 +143,10 @@ import IconArrow from '~/components/icons/IconArrow.vue'
 export default {
   components: {
     FooterGuideList,
-    FooterAreaList,
     FooterAreaIndex,
     FooterContentsList,
     FooterSearchIndex,
+    AreaList,
     AppAccentButton,
     IconArrow,
   },

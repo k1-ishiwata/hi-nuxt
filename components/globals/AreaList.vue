@@ -1,24 +1,24 @@
 <template>
-  <ul class="footer-area-list">
+  <ul class="area-list">
     <slot name="index" />
-    <slot name="item" />
+    <slot name="item"/>
   </ul>
 </template>
 
 <style scoped>
-.footer-area-list {
+.area-list {
   @apply flex items-center flex-wrap;
 }
 
-.footer-area-list:first-of-type {
+.area-list:first-of-type {
   @apply flex items-center flex-wrap;
 }
 
-.footer-area-list /deep/ li {
+.area-list /deep/ li {
   @apply py-8;
 }
 
-.footer-area-list /deep/ li > a {
+.area-list /deep/ li > a {
   font-size: theme('fontSize.fz12');
   line-height: theme('lineHeight.lh12');
   color: theme('colors.base');
@@ -26,11 +26,11 @@
   @apply flex items-center px-4 border-solid border-r-1;
 }
 
-.footer-area-list /deep/ li > a:hover {
+.area-list /deep/ li > a:hover {
   @apply underline;
 }
 
-.footer-area-list /deep/ li:last-child > a {
+.area-list /deep/ li:last-child > a {
   @apply  border-r-0;
 }
 </style>

@@ -1,32 +1,28 @@
 <template>
   <header class="header-common">
-    <!-- <div style="display: flex;
-    height: 25px;
-    align-items: center;">
 
-      <div style="width: 54.43%;
-    text-align: right;
-    display: flex;
-    justify-content: flex-end;
-    align-items: baseline;
-    font-size: 12px;
-    color: #333;">
-        <span style="font-size: 18px;
-    color: #FD306A;
-    font-weight: bold;">1,234</span>店舗
-        <span>1,234,567</span>女の子
-        <span>1,234,567,890</span>口コミ
-      </div>
-
-      <ul class="region-list">
-        <li v-for="regionLink in regionLinks"
+    <div style="display: flex;height: 25px;align-items: center;">
+      <HeaderInformation>
+        <span slot="shop">
+          {{ shop }}
+        </span>
+        <span slot="girl">
+          {{ girl }}
+        </span>
+        <span slot="reviews">
+          {{ reviews }}
+        </span>
+      </HeaderInformation>
+      <AreaList>
+        <li slot="item" v-for="regionLink in regionLinks"
             :key="regionLink.name"
         >
-          <a :href="regionLink.path">{{ regionLink.name }}</a>
+          <a :href="regionLink.path">
+            {{ regionLink.name }}
+          </a>
         </li>
-      </ul>
-
-    </div> -->
+      </AreaList>
+    </div>
 
     <div class="wrapper">
 
@@ -66,9 +62,8 @@
 
     </div>
 
-
-
-    <HeaderGuideNav>
+    <div id="nav">
+      <HeaderGuideNav>
       <li slot="navItem"
           v-for="link in navLinks"
           :key="link.name"
@@ -78,18 +73,46 @@
             <IconHome class="icon fill-current" width="30" height="28" />
           </a>
         </template>
+
         <template v-else>
-          <a :href="link.path">
+          <a :href="link.path"
+              v-if="!link.items"
+              class="aaa"
+          >
             {{ link.name }}
           </a>
+          <span v-else
+                class="aaa"
+          >
+              {{ link.name }}
+              <IconArrow class="icon fill-current" width="10" height="13" />
+
+              <HeaderGuideNavDrop :class="['dropdown', { isOpen }]">
+                <li slot="dropItem"
+                    v-for="item in link.items"
+                    :key="item.name"
+                >
+                  <a :href="item.path">
+                    <IconArrowAngle class="icon fill-current" width="10" height="13" />
+                    <span>
+                        {{ item.name }}
+                    </span>
+                  </a>
+                </li>
+              </HeaderGuideNavDrop>
+          </span>
         </template>
       </li>
     </HeaderGuideNav>
+    </div>
   </header>
 </template>
 
 <script>
 import HeaderGuideNav from '~/components/globals/HeaderGuideNav.vue'
+import HeaderGuideNavDrop from '~/components/globals/HeaderGuideNavDrop.vue'
+
+import HeaderInformation from '~/components/globals/HeaderInformation.vue'
 import FreeWordSearch from '~/components/modules/FreeWordSearch.vue'
 import MembersNav from '~/components/modules/MembersNav.vue'
 import NoUnderEighteen from '~/components/modules/NoUnderEighteen.vue'
@@ -98,11 +121,16 @@ import AppButton from '~/components/parts/AppButton.vue'
 import AppAccentButton from '~/components/parts/AppAccentButton.vue'
 import IconHome from '~/components/icons/IconHome.vue'
 import IconKey from '~/components/icons/IconKey.vue'
+import IconArrow from '~/components/icons/IconArrow.vue'
+import IconArrowAngle from '~/components/icons/IconArrowAngle.vue'
 
+import AreaList from '~/components/globals/AreaList.vue'
 
 export default {
   components: {
     HeaderGuideNav,
+    HeaderGuideNavDrop,
+    HeaderInformation,
     FreeWordSearch,
     MembersNav,
     NoUnderEighteen,
@@ -110,24 +138,105 @@ export default {
     AppButton,
     IconHome,
     IconKey,
+    IconArrow,
+    IconArrowAngle,
+    AreaList,
   },
   data() {
     return {
       isHead: true,
       isIcon: true,
       isWidth: true,
+      isOpen: false,
       placeholder: 'フリーワード検索',
       link: '',
+      shop: '123',
+      girl: '123,345',
+      reviews: '123,456,789',
       navLinks: [
-        { name: 'トップ', path: '/' },
-        { name: 'お店検索', path: '/' },
-        { name: '女の子検索', path: '/' },
-        { name: 'クーポン', path: '/' },
-        { name: 'ランキング', path: '/' },
-        { name: '口コミ', path: '/' },
-        { name: '写メ日記', path: '/' },
-        { name: '動画･画像･マンガ', path: '/' },
+        {
+          name: 'トップ',
+          path: '/',
+        },
+        {
+          name: 'お店検索',
+          path: '/',
+          items: [
+            {
+              name: 'Service1',
+              path: '/',
+            },
+          ],
+        },
+        {
+          name: '女の子検索',
+          path: '/',
+          items: [
+            {
+              name: 'Service2',
+              path: '/',
+            },
+            {
+              name: 'Service3',
+              path: '/',
+            },
+            {
+              name: 'Service4',
+              path: '/',
+            },
+            {
+              name: 'Service5',
+              path: '/',
+            },
+          ],
+        },
+        {
+          name: 'クーポン',
+          path: '/',
+          items: [
+            {
+              name: 'Service6',
+              path: '/',
+            },
+            {
+              name: 'Service7',
+              path: '/',
+            },
+            {
+              name: 'Service8',
+              path: '/',
+            },
+          ],
+        },
+        {
+          name: 'ランキング',
+          path: '/',
+        },
+        {
+          name: '口コミ',
+          path: '/',
+        },
+        {
+          name: '写メ日記',
+          path: '/',
+        },
+        {
+          name: '動画･画像･マンガ',
+          path: '/',
+          items: [
+            {
+              name: 'Service9',
+              path: '/',
+            },
+            {
+              name: 'Service10',
+              path: '/',
+            },
+          ],
+        },
       ],
+      activeItem: '',
+      selectItem: '',
       regionLinks: [
         { name: '北海道･東北', path: '/' },
         { name: '関東', path: '/' },
@@ -140,10 +249,32 @@ export default {
       ],
     }
   },
+  methods: {
+    // mouseover: function () {
+    //     this.isOpen = true;
+    // },
+    // mouseleave: function () {
+    //     this.isOpen = false;
+    // },
+    /**
+    *スライド遷移イベント
+    * @parm {number} index クリックされたタブの番号
+    */
+    mouseover() {
+      this.isOpen = true
+    },
+    mouseleave() {
+      this.isOpen = false
+    },
+  },
 }
 </script>
 
 <style scoped>
+.isOpen {
+  display: block;
+}
+
 .header-common {
   /* min-height: 190px; */
   border-top-width: 5px;

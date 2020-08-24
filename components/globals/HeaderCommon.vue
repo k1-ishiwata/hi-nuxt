@@ -1,7 +1,7 @@
 <template>
   <header class="header-common">
 
-    <div style="display: flex;height: 25px;align-items: center;">
+    <div style="display: flex;height: 25px;align-items: center;position:absolute;top:0;left:0;right:0;">
       <HeaderInformation>
         <span slot="shop">
           {{ shop }}
@@ -13,19 +13,21 @@
           {{ reviews }}
         </span>
       </HeaderInformation>
-      <AreaList>
-        <li slot="item" v-for="regionLink in regionLinks"
-            :key="regionLink.name"
-        >
-          <a :href="regionLink.path">
-            {{ regionLink.name }}
-          </a>
-        </li>
-      </AreaList>
+
+      <div class="header-area-list">
+        <AreaList :class="{ 'region-list' : isTextChange }">
+          <li slot="item" v-for="regionLink in regionLinks"
+              :key="regionLink.name"
+          >
+            <a :href="regionLink.path">
+              {{ regionLink.name }}
+            </a>
+          </li>
+        </AreaList>
+      </div>
     </div>
 
     <div class="wrapper">
-
       <ul class="header-side-menu">
         <li>
           <NoUnderEighteen />
@@ -62,13 +64,12 @@
 
     </div>
 
-    <div id="nav">
-      <HeaderGuideNav>
+    <HeaderGuideNav>
       <li slot="navItem"
           v-for="link in navLinks"
           :key="link.name"
       >
-        <template v-if="link.name === 'トップ'">
+        <template v-if="link.name === 'top'">
           <a :href="link.path">
             <IconHome class="icon fill-current" width="30" height="28" />
           </a>
@@ -83,12 +84,14 @@
           </a>
           <span v-else
                 class="aaa"
+                @mouseover="mouseOver"
+                @mouseleave="mouseLeave"
           >
               {{ link.name }}
               <IconArrow class="icon fill-current" width="10" height="13" />
 
-              <HeaderGuideNavDrop :class="['dropdown', { isOpen }]">
-                <li slot="dropItem"
+              <ul :class="isOpen">
+                <li 
                     v-for="item in link.items"
                     :key="item.name"
                 >
@@ -99,19 +102,18 @@
                     </span>
                   </a>
                 </li>
-              </HeaderGuideNavDrop>
+              </ul>
           </span>
         </template>
       </li>
     </HeaderGuideNav>
-    </div>
+    
   </header>
 </template>
 
 <script>
 import HeaderGuideNav from '~/components/globals/HeaderGuideNav.vue'
 import HeaderGuideNavDrop from '~/components/globals/HeaderGuideNavDrop.vue'
-
 import HeaderInformation from '~/components/globals/HeaderInformation.vue'
 import FreeWordSearch from '~/components/modules/FreeWordSearch.vue'
 import MembersNav from '~/components/modules/MembersNav.vue'
@@ -123,7 +125,6 @@ import IconHome from '~/components/icons/IconHome.vue'
 import IconKey from '~/components/icons/IconKey.vue'
 import IconArrow from '~/components/icons/IconArrow.vue'
 import IconArrowAngle from '~/components/icons/IconArrowAngle.vue'
-
 import AreaList from '~/components/globals/AreaList.vue'
 
 export default {
@@ -144,6 +145,7 @@ export default {
   },
   data() {
     return {
+      isTextChange: true,
       isHead: true,
       isIcon: true,
       isWidth: true,
@@ -155,6 +157,7 @@ export default {
       reviews: '123,456,789',
       navLinks: [
         {
+          id: 'top',
           name: 'トップ',
           path: '/',
         },
@@ -238,14 +241,14 @@ export default {
       activeItem: '',
       selectItem: '',
       regionLinks: [
-        { name: '北海道･東北', path: '/' },
-        { name: '関東', path: '/' },
-        { name: '北陸', path: '/' },
-        { name: '甲信越', path: '/' },
-        { name: '東海', path: '/' },
-        { name: '関西', path: '/' },
-        { name: '中国･四国', path: '/' },
-        { name: '九州･沖縄', path: '/' },
+        { id: 'hokkaido-tohoku', name: '北海道･東北', path: '/' },
+        { id: 'kanto', name: '関東', path: '/' },
+        { id: 'hokutiku', name: '北陸', path: '/' },
+        { id: '', name: '甲信越', path: '/' },
+        { id: 'hokkaido-tohoku', name: '東海', path: '/' },
+        { id: 'hokkaido-tohoku', name: '関西', path: '/' },
+        { id: 'hokkaido-tohoku', name: '中国･四国', path: '/' },
+        { id: 'hokkaido-tohoku', name: '九州･沖縄', path: '/' },
       ],
     }
   },
@@ -256,16 +259,22 @@ export default {
     // mouseleave: function () {
     //     this.isOpen = false;
     // },
+    mouseOver: function(){
+      this.isOpen = true
+    },
+    mouseLeave: function(){
+      this.isOpen = false;
+    }
     /**
     *スライド遷移イベント
     * @parm {number} index クリックされたタブの番号
     */
-    mouseover() {
-      this.isOpen = true
-    },
-    mouseleave() {
-      this.isOpen = false
-    },
+    // mouseover() {
+    //   this.isOpen = true
+    // },
+    // mouseleave() {
+    //   this.isOpen = false
+    // },
   },
 }
 </script>
@@ -275,6 +284,14 @@ export default {
   display: block;
 }
 
+.header-common .region-list > li > a {
+  color: #fff;
+}
+
+.header-common .region-list > li > .current-page {
+  color: theme('colors.accent');
+}
+
 .header-common {
   /* min-height: 190px; */
   border-top-width: 5px;
@@ -282,21 +299,34 @@ export default {
   @apply relative border-solid bg-white;
 }
 
-.header-common::before {
-  content: "";
-}
-
-.header-common::after {
-  content: "";
+.header-common .header-area-list {
   width: 45.57%;
   height: 25px;
-  background-color: theme('colors.base');
-  @apply inline-block absolute top-0 right-0;
+  /* background-color: #333333; */
+  /* display: inline-block; */
+  /* position: absolute; */
+  /* top: 0; */
+  /* right: 0; */
+  padding: 0 40px;
+  @apply relative;
+}
+
+.header-common .header-area-list::before {
+  content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: -1.64px;
+    left: 0;
+    display: inline-block;
+    background: #333;
+    transform: perspective(0.9em) rotateX(-2deg);
+    transform-origin: top right;
 }
 
 .header-common .wrapper {
   width: theme('width.wrapper-common');
-  @apply relative my-0 mx-auto pt-0 pb-16 px-0;
+  @apply relative my-0 mx-auto pt-0 py-24 px-0;
 }
 
 .header-common form {
@@ -330,7 +360,7 @@ export default {
 }
 
 .header-common .header-side-menu {
-  top: 28px;
+  top: 50px;
   @apply absolute right-0 flex items-center -ml-8 -mb-8;
 }
 

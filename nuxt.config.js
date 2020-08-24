@@ -29,6 +29,7 @@ export default {
   ** プラグインの定義
   */
   plugins: [
+    { src: '~plugins/vue-dropdown-menu', mode: 'client' },
   ],
   /*
   ** Auto import components

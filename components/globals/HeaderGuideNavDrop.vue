@@ -7,7 +7,7 @@
 <style scoped>
 .header-guide-nav-drop {
   top: 100%;
-  /* display: none; */
+  display: none;
   width: 219px;
   border-color: theme('colors.accent');
   @apply absolute left-0 px-16 bg-white border-solid border-4;

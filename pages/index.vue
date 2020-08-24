@@ -8,7 +8,7 @@
         <span slot="name">やったね！</span>
       </AppAccentButton> -->
       <p>
-        なにがでるかな
+        なにがでるかな!!!!!!!!!!!!
       </p>
     </div>
   </main>

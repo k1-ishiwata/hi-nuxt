@@ -1,8 +1,9 @@
 <template>
   <div class="no-under-eighteen">
-    <IconNoUnderEighteen class="icon fill-current"
-                         width="36"
-                         height="34"
+    <IconNoUnderEighteen
+      class="icon fill-current"
+      width="36"
+      height="34"
     />
     <p>
       18歳未満の御利用は<br>

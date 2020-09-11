@@ -29,7 +29,8 @@ export default {
   ** プラグインの定義
   */
   plugins: [
-    { src: '~plugins/vue-dropdown-menu', mode: 'client' },
+    { src: '~/plugins/vue-lazyload.js' },
+    { src: '~/plugins/vue-dropdown-menu.js', mode: 'client' },
   ],
   /*
   ** Auto import components

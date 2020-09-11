@@ -66,23 +66,25 @@
             <AreaList v-for="prefecture in area.prefecture"
                             :key="prefecture.id"
             >
-              <li slot="index"
-                  class="w-full"
-              >
-                <FooterAreaIndex :isParentheses="isParentheses">
-                  <template slot="parentheses">
-                    {{ prefecture.name }}
-                  </template>
-                </FooterAreaIndex>
-              </li>
-              <li slot="item"
-                  v-for="city in prefecture.city"
-                  :key="city.name"
-              >
-                <a :href="city.path">
-                  {{ city.name }}
-                </a>
-              </li>
+              <template v-if="area.id === 'kanto'">
+                <li slot="index"
+                    class="w-full"
+                >
+                  <FooterAreaIndex :isParentheses="isParentheses">
+                    <template slot="parentheses">
+                      {{ prefecture.name }}
+                    </template>
+                  </FooterAreaIndex>
+                </li>
+                <li slot="item"
+                    v-for="city in prefecture.city"
+                    :key="city.name"
+                >
+                  <a :href="city.path">
+                    {{ city.name }}風俗
+                  </a>
+                </li>
+              </template>
             </AreaList>
           </template>
         </div>
@@ -103,21 +105,23 @@
               <AreaList v-for="prefecture in area.prefecture"
                               :key="prefecture.id"
               >
-                <li slot="index">
-                  <FooterAreaIndex :isParentheses="isParentheses">
-                    <template slot="parentheses">
-                      {{ prefecture.name }}
-                    </template>
-                  </FooterAreaIndex>
-                </li>
-                <li slot="item"
-                    v-for="city in prefecture.city"
-                    :key="city.name"
-                >
-                  <a :href="city.path">
-                    {{ city.name }}
-                  </a>
-                </li>
+                <template v-if="area.id === 'kanto'">
+                  <li slot="index">
+                    <FooterAreaIndex :isParentheses="isParentheses">
+                      <template slot="parentheses">
+                        {{ prefecture.name }}
+                      </template>
+                    </FooterAreaIndex>
+                  </li>
+                  <li slot="item"
+                      v-for="city in prefecture.city"
+                      :key="city.name"
+                  >
+                    <a :href="city.path">
+                      {{ city.name }}{{ shop.type }}
+                    </a>
+                  </li>
+                </template>
               </AreaList>
             </div>
           </div>
@@ -172,10 +176,10 @@ export default {
         { name: '店舗様ログイン', path: '/' },
       ],
       searchShop: [
-        { name: 'デリヘル店の主要エリア' },
-        { name: 'ホテヘル店の主要エリア' },
-        { name: '店舗型ヘルス店の主要エリア' },
-        { name: 'ソープ店の主要エリア' },
+        { id: 'delivery-health', name: 'デリヘル店の主要エリア', type: 'デリヘル' },
+        { id: 'hotel-health', name: 'ホテヘル店の主要エリア', type: 'ホテヘル' },
+        { id: 'shop-health', name: '店舗型ヘルス店の主要エリア', type: 'ヘルス' },
+        { id: 'soap', name: 'ソープ店の主要エリア', type: 'ソープ' },
       ],
       areaList: [
         {
@@ -224,12 +228,88 @@ export default {
                 { order: 22, name: 'その他東京都', path: '/' },
               ]
             },
-            { id: 'saitama', name: '埼玉', path: '/' },
-            { id: 'chiba', name: '千葉', path: '/' },
-            { id: 'kanagawa', name: '神奈川', path: '/' },
-            { id: 'ibaraki', name: '茨城', path: '/' },
-            { id: 'tochigi', name: '栃木', path: '/' },
-            { id: 'gunma', name: '群馬', path: '/' },
+            {
+              id: 'saitama',
+              name: '埼玉',
+              path: '/',
+              city: [
+                { order: 1, name: '西川口・蕨', path: '/' },
+                { order: 2, name: '大宮・浦和', path: '/' },
+                { order: 3, name: '熊谷・東松山', path: '/' },
+                { order: 4, name: '越谷・草加', path: '/' },
+                { order: 5, name: '春日部・久喜', path: '/' },
+                { order: 6, name: '所沢・入間', path: '/' },
+                { order: 7, name: '本庄', path: '/' },
+                { order: 8, name: '川越', path: '/' },
+                { order: 9, name: 'その他埼玉県', path: '/' },
+              ]
+            },
+            {
+              id: 'chiba',
+              name: '千葉',
+              path: '/',
+              city: [
+                { order: 1, name: '千葉・栄町', path: '/' },
+                { order: 2, name: '船橋・西船橋', path: '/' },
+                { order: 3, name: '松戸・新松戸', path: '/' },
+                { order: 4, name: '市川・本八幡', path: '/' },
+                { order: 5, name: '津田沼・幕張', path: '/' },
+                { order: 6, name: '市原・姉ヶ崎', path: '/' },
+                { order: 7, name: 'その他千葉県', path: '/' },
+              ]
+            },
+            {
+              id: 'kanagawa',
+              name: '神奈川',
+              path: '/',
+              city: [
+                { order: 1, name: '横浜(関内・曙町)', path: '/' },
+                { order: 2, name: '新横浜・鶴見', path: '/' },
+                { order: 3, name: '上大岡', path: '/' },
+                { order: 4, name: '川崎(堀之内・南町)', path: '/' },
+                { order: 5, name: '相模大野・相模原', path: '/' },
+                { order: 6, name: '平塚・小田原・藤沢', path: '/' },
+                { order: 7, name: '横須賀', path: '/' },
+                { order: 8, name: '厚木・大和', path: '/' },
+                { order: 9, name: '横その他神奈川県須賀', path: '/' },
+              ]
+            },
+            {
+              id: 'ibaraki',
+              name: '茨城',
+              path: '/',
+              city: [
+                { order: 1, name: '土浦', path: '/' },
+                { order: 2, name: 'つくば', path: '/' },
+                { order: 3, name: '取手・牛久', path: '/' },
+                { order: 4, name: '水戸', path: '/' },
+                { order: 5, name: '日立・ひたちなか', path: '/' },
+                { order: 6, name: 'その他茨城県', path: '/' },
+              ]
+            },
+            {
+              id: 'tochigi',
+              name: '栃木',
+              path: '/',
+              city: [
+                { order: 1, name: '宇都宮', path: '/' },
+                { order: 2, name: '小山', path: '/' },
+                { order: 3, name: '那須高原', path: '/' },
+                { order: 4, name: '足利', path: '/' },
+                { order: 5, name: 'その他栃木県', path: '/' },
+              ]
+            },
+            {
+              id: 'gunma',
+              name: '群馬',
+              path: '/',
+              city: [
+                { order: 1, name: '高崎・前橋', path: '/' },
+                { order: 2, name: '伊勢崎', path: '/' },
+                { order: 3, name: '太田', path: '/' },
+                { order: 4, name: 'その他群馬県', path: '/' },
+              ]
+            },
           ]
         },
         {

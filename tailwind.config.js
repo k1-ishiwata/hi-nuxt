@@ -5,6 +5,9 @@
 ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
 */
 module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true,
+  },
   theme: {
     extend: {
       fontFamily: {
@@ -17,10 +20,11 @@ module.exports = {
         8: '8px',
         10: '10px',
         12: '12px',
-        16: '16px',
         14: '14px',
+        16: '16px',
         20: '20px',
         24: '24px',
+        32: '32px',
         36: '36px',
       },
       // 色
@@ -29,11 +33,11 @@ module.exports = {
         accent: '#FD306A',
         'bg-gray': '#EFEFEF',
         'bg-light-blue': '#47AFFF',
+        'bg-green': '#58B000',
         'border-horizontalrule': '#D8D8D8',
         'border-light-gray': '#D4D4D4',
         'no-under-eighteen': '#747474',
-
-        'button-base': '#E0E0E0',
+        'parts-base': '#E0E0E0',
       },
       // サイズ
       width: {
@@ -65,11 +69,17 @@ module.exports = {
         1: '1px',
       },
       borderRadius: {
-        'pills': '35px',
+        'rounded-sm': '2px',
         'rounded': '6px',
+        'pills': '35px',
       },
       inset: {
         '1/2': '50%',
+      },
+      // 不透明度
+      opacity: {
+        '70': '.7',
+        '80': '.8',
       },
     },
   },

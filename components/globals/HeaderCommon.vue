@@ -1,7 +1,6 @@
 <template>
   <header class="header-common">
-
-    <div style="display: flex;height: 25px;align-items: center;position:absolute;top:0;left:0;right:0;">
+    <div class="" style="display: flex;height: 25px;align-items: center;position:absolute;top:0;left:0;right:0;">
       <HeaderInformation>
         <span slot="shop">
           {{ shop }}
@@ -13,20 +12,20 @@
           {{ reviews }}
         </span>
       </HeaderInformation>
-
       <div class="header-area-list">
         <AreaList :class="{ 'region-list' : isTextChange }">
           <li slot="item" v-for="regionLink in regionLinks"
               :key="regionLink.name"
           >
-            <a :href="regionLink.path">
+            <a :class="{ 'active' : regionLink.id === 'kanto'}"
+               :href="regionLink.path"
+            >
               {{ regionLink.name }}
             </a>
           </li>
         </AreaList>
       </div>
     </div>
-
     <div class="wrapper">
       <ul class="header-side-menu">
         <li>
@@ -43,13 +42,12 @@
           <MembersNav />
         </li>
       </ul>
-
       <HeadPrimary>
         <a slot="image" class="image" href="/">
           <img src="~assets/images/logo-purelovers.png"
-              alt="風俗情報ぴゅあらば"
-              width="164"
-              height="63"
+               alt="風俗情報ぴゅあらば"
+               width="164"
+               height="63"
           >
         </a>
         <template slot="title">
@@ -57,57 +55,50 @@
           風俗店情報
         </template>
         <p slot="lead" class="lead">
-          wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-          h1リード文が入ります。h1リード文が入ります。h1リード文が入ります。h1リード文が入ります。h1リード文が入ります。h1リード文が入ります。h1リード文が入ります。h1リード文が入ります。
+          {都道府県}・{都道府県}・{都道府県}など{関東}の安心して遊べるおすすめ風俗店情報をご紹介!デリヘルやソープ・セクキャバなどの割引クーポン・人気ランキング・体験動画・口コミ情報など風俗店探しに役立つコンテンツをご覧いただけます。
         </p>
       </HeadPrimary>
-
     </div>
-
     <HeaderGuideNav>
       <li slot="navItem"
-          v-for="link in navLinks"
+          v-for="(link, index) in navLinks"
           :key="link.name"
       >
-        <template v-if="link.name === 'top'">
+        <template v-if="link.id === 'top'">
           <a :href="link.path">
             <IconHome class="icon fill-current" width="30" height="28" />
           </a>
         </template>
-
         <template v-else>
           <a :href="link.path"
               v-if="!link.items"
-              class="aaa"
           >
             {{ link.name }}
           </a>
           <span v-else
-                class="aaa"
-                @mouseover="mouseOver"
+                class="drop-item"
+                @mouseover="mouseOver(index)"
                 @mouseleave="mouseLeave"
           >
-              {{ link.name }}
-              <IconArrow class="icon fill-current" width="10" height="13" />
-
-              <ul :class="isOpen">
-                <li 
-                    v-for="item in link.items"
-                    :key="item.name"
-                >
-                  <a :href="item.path">
-                    <IconArrowAngle class="icon fill-current" width="10" height="13" />
-                    <span>
-                        {{ item.name }}
-                    </span>
-                  </a>
-                </li>
-              </ul>
+            {{ link.name }}
+            <IconArrow class="icon-triangle icon fill-current" width="7" height="9" />
+            <HeaderGuideNavDrop v-show="isOpen && index === hoverIndex " :class="{isOpen}">
+              <li slot="dropItem"
+                  v-for="item in link.items"
+                  :key="item.name"
+              >
+                <a :href="item.path">
+                  <IconArrowAngle class="icon fill-current" width="7" height="9" />
+                  <span>
+                      {{ item.name }}
+                  </span>
+                </a>
+              </li>
+            </HeaderGuideNavDrop>
           </span>
         </template>
       </li>
     </HeaderGuideNav>
-    
   </header>
 </template>
 
@@ -150,6 +141,7 @@ export default {
       isIcon: true,
       isWidth: true,
       isOpen: false,
+      hoverIndex: null,
       placeholder: 'フリーワード検索',
       link: '',
       shop: '123',
@@ -162,19 +154,64 @@ export default {
           path: '/',
         },
         {
+          id: 'search-shop',
           name: 'お店検索',
+          path: '/',
+          items: [
+            {
+              name: '場所から探す',
+              path: '/',
+            },
+            {
+              name: '業種から探す',
+              path: '/',
+            },
+            {
+              name: '総額から探す',
+              path: '/',
+            },
+            {
+              name: 'こだわりで探す',
+              path: '/',
+            },
+            {
+              name: '店舗名から探す',
+              path: '/',
+            },
+          ],
+        },
+        {
+          id: 'search-girl',
+          name: '女の子検索',
+          path: '/',
+          items: [
+            {
+              name: '出勤&タイプで探す   ',
+              path: '/',
+            },
+            {
+              name: '画像から女の子を探す',
+              path: '/',
+            },
+            {
+              name: '今すぐ遊べるピックアップ嬢',
+              path: '/',
+            },
+            {
+              name: '体験入店の女の子',
+              path: '/',
+            },
+          ],
+        },
+        {
+          id: 'search-coupon',
+          name: 'クーポン',
           path: '/',
           items: [
             {
               name: 'Service1',
               path: '/',
             },
-          ],
-        },
-        {
-          name: '女の子検索',
-          path: '/',
-          items: [
             {
               name: 'Service2',
               path: '/',
@@ -183,6 +220,28 @@ export default {
               name: 'Service3',
               path: '/',
             },
+          ],
+        },
+        {
+          id: 'ranking',
+          name: 'ランキング',
+          path: '/',
+        },
+        {
+          id: 'reviews',
+          name: '口コミ',
+          path: '/',
+        },
+        {
+          id: 'diary',
+          name: '写メ日記',
+          path: '/',
+        },
+        {
+          id: 'search-contents',
+          name: '動画･画像･マンガ',
+          path: '/',
+          items: [
             {
               name: 'Service4',
               path: '/',
@@ -193,105 +252,38 @@ export default {
             },
           ],
         },
-        {
-          name: 'クーポン',
-          path: '/',
-          items: [
-            {
-              name: 'Service6',
-              path: '/',
-            },
-            {
-              name: 'Service7',
-              path: '/',
-            },
-            {
-              name: 'Service8',
-              path: '/',
-            },
-          ],
-        },
-        {
-          name: 'ランキング',
-          path: '/',
-        },
-        {
-          name: '口コミ',
-          path: '/',
-        },
-        {
-          name: '写メ日記',
-          path: '/',
-        },
-        {
-          name: '動画･画像･マンガ',
-          path: '/',
-          items: [
-            {
-              name: 'Service9',
-              path: '/',
-            },
-            {
-              name: 'Service10',
-              path: '/',
-            },
-          ],
-        },
       ],
       activeItem: '',
       selectItem: '',
       regionLinks: [
         { id: 'hokkaido-tohoku', name: '北海道･東北', path: '/' },
         { id: 'kanto', name: '関東', path: '/' },
-        { id: 'hokutiku', name: '北陸', path: '/' },
-        { id: '', name: '甲信越', path: '/' },
-        { id: 'hokkaido-tohoku', name: '東海', path: '/' },
-        { id: 'hokkaido-tohoku', name: '関西', path: '/' },
-        { id: 'hokkaido-tohoku', name: '中国･四国', path: '/' },
-        { id: 'hokkaido-tohoku', name: '九州･沖縄', path: '/' },
+        { id: 'hokuriku', name: '北陸', path: '/' },
+        { id: 'koshinetsu', name: '甲信越', path: '/' },
+        { id: 'tokai', name: '東海', path: '/' },
+        { id: 'kansai', name: '関西', path: '/' },
+        { id: 'chugoku-shikoku', name: '中国･四国', path: '/' },
+        { id: 'kyushu-okinawa', name: '九州･沖縄', path: '/' },
       ],
     }
   },
   methods: {
-    // mouseover: function () {
-    //     this.isOpen = true;
-    // },
-    // mouseleave: function () {
-    //     this.isOpen = false;
-    // },
-    mouseOver: function(){
-      this.isOpen = true
-    },
-    mouseLeave: function(){
-      this.isOpen = false;
-    }
     /**
-    *スライド遷移イベント
-    * @parm {number} index クリックされたタブの番号
+    * ナビゲーションのドロップダウンメニュー
+    * @parm {number} index mouseoverされたmenuの番号
     */
-    // mouseover() {
-    //   this.isOpen = true
-    // },
-    // mouseleave() {
-    //   this.isOpen = false
-    // },
+    mouseOver(index) {
+      this.isOpen = true
+      this.hoverIndex = index
+    },
+    mouseLeave() {
+      this.isOpen = false
+    },
   },
 }
 </script>
 
 <style scoped>
-.isOpen {
-  display: block;
-}
-
-.header-common .region-list > li > a {
-  color: #fff;
-}
-
-.header-common .region-list > li > .current-page {
-  color: theme('colors.accent');
-}
-
 .header-common {
   /* min-height: 190px; */
   border-top-width: 5px;
@@ -342,17 +334,36 @@ export default {
   @apply py-4;
 }
 
-.header-common .region-list a {
+.header-common .region-list > li > .current-page {
+  color: theme('colors.accent');
+}
+
+.header-common .region-list > li > a {
+  color: #fff;
   font-size: theme('fontSize.fz12');
-  @apply px-4 text-white border-solid border-r-1 border-white cursor-pointer ;
+  @apply px-4 text-white border-solid border-r-1 border-white cursor-pointer;
+}
+
+.header-common .region-list > li:first-child > a {
+  @apply pl-0;
+}
+
+.header-common .region-list > li:last-child > a {
+  @apply pr-0;
 }
 
 .header-common .region-list a.active {
   color: theme('colors.accent');
+  pointer-events: none;
 }
 
 .header-common .region-list a:hover {
   color: theme('colors.accent');
+}
+
+.header-common .region-list a.active:hover {
+  text-decoration: none;
+  cursor: auto;
 }
 
 .header-common .region-list li:last-child > a {

@@ -29,7 +29,9 @@ export default {
 
 <style scoped>
 .app-accent-button {
+  width: 164px;
   height: 35px;
+  z-index: 10;
   font-size: theme('fontSize.fz14');
   line-height: theme('lineHeight.lh14');
   color: theme('colors.accent');

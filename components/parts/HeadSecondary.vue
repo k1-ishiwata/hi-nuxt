@@ -5,7 +5,9 @@
       <h2 class="secondary-title" >
         <slot name="title" />
       </h2>
-      <div class="secondary-item" v-if="isButton">
+      <div v-if="isButton"
+           class="secondary-item"
+      >
         <slot name="item" />
       </div>
     </div>
@@ -23,19 +25,14 @@ export default {
 
 <style scoped>
 .head-secondary  {
-  position: relative;
+  @apply relative;
 }
 
 .head-secondary .secondary-wrapper {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-     padding: 8px 8px;
-    border: 4px solid #FD306A;
-font-size: 24px;
-line-height: 1;
-position: relative;
-background: #FD306A;
+  font-size: theme('fontSize.fz24');
+  border-color: theme('colors.accent');
+  background: theme('colors.accent');
+  @apply relative flex items-center font-bold py-8 px-8 border-4 border-solid leading-none;
 }
 
 .head-secondary > .secondary-wrapper > .secondary-title {

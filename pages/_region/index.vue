@@ -105,6 +105,7 @@
       </ul>
     </section>
 
+    <!-- ランキング -->
     <section>
       <HeadSecondary :isButton="true">
         <IconCrown slot="icon"
@@ -116,7 +117,7 @@
           {地方}の風俗ランキング
         </template>
         <AppAccentButton slot="item"
-                         link="/ranking"
+                         link="/"
         >
           <span slot="name">
             もっと見る
@@ -147,7 +148,91 @@
         <div slot="contents"
              v-if="currentId === 'shop'"
         >
-          お店
+          <!-- お店 -->
+          <ul class="ranking">
+            <li>
+              <a href="">
+                <AppRankingLabel>
+                  <template slot="rank">1</template>
+                </AppRankingLabel>
+                <figure>
+                  <p>
+                    <img src="https://placehold.jp/340x454.png" alt="">
+                  </p>
+                  <div >
+                    <p style="font-size: 24px;line-height: 24px;">wwwwwwwwwwwwwwwwwwwwwww</p>
+                    <p style="font-size: 14px;line-height: 20px;">aaaaaaaaaaaaaaa</p>
+                  </div>
+                </figure>
+              </a>
+            </li>
+
+            <li>
+              <a href="">
+                <figure>
+                  <p>
+                    <img src="https://placehold.jp/170x227.png" alt="">
+                  </p>
+                  <div>
+                    <p>wwwwwwwwwwwwwwwwwwwwwww</p>
+                    <p>aaaaaaaaaaaaaaa</p>
+                  </div>
+                </figure>
+              </a>
+            </li>
+
+            <li>
+              <a href="">
+                <figure>
+                  <p>
+                    <img src="https://placehold.jp/170x227.png" alt="">
+                  </p>
+                  <div>
+                    <p>wwwwwwwwwwwwwwwwwwwwwww</p>
+                    <p>aaaaaaaaaaaaaaa</p>
+                  </div>
+                </figure>
+              </a>
+            </li>
+
+            <li>
+              <a href="">
+                <figure>
+                  <p>
+                    <img src="https://placehold.jp/170x227.png" alt="">
+                  </p>
+                  <div>
+                    <p>wwwwwwwwwwwwwwwwwwwwwww</p>
+                    <p>aaaaaaaaaaaaaaa</p>
+                  </div>
+                </figure>
+              </a>
+            </li>
+
+            <li>
+              <a href="">
+                <figure>
+                  <p>
+                    <img src="https://placehold.jp/170x227.png" alt="">
+                  </p>
+                  <div>
+                    <p>wwwwwwwwwwwwwwwwwwwwwww</p>
+                    <p>aaaaaaaaaaaaaaa</p>
+                  </div>
+                </figure>
+              </a>
+            </li>
+          </ul>
+          <p>
+            <a class="rank-btn" href="">女の子ランキングをもっと見る</a>
+          </p>
+
+
+
+
+
+
+
         </div>
         <div slot="contents"
              v-else-if="currentId === 'reviews'"
@@ -166,6 +251,11 @@
         </div>
       </AppTabContents>
     </section>
+
+    <div>
+      
+      
+    </div>
 
   </div>
 </template>
@@ -186,6 +276,8 @@ import AppCheckBox from '~/components/parts/AppCheckBox.vue'
 import HeadSecondary from '~/components/parts/HeadSecondary.vue'
 import AppTabItem from '~/components/parts/AppTabItem.vue'
 import AppTabContents from '~/components/parts/AppTabContents.vue'
+import AppRankingLabel from '~/components/parts/AppRankingLabel.vue'
+
 
 
 import IconMap from '~/components/icons/IconMap.vue'
@@ -209,6 +301,8 @@ export default {
     AppTabContents,
     AppImages,
     IconCrown,
+    AppRankingLabel,
+
   },
   data() {
     return {
@@ -351,5 +445,121 @@ section + section {
 
 .top-search-prefecture > li + li {
   border-left: 1px solid #E5E5E5;
+}
+
+
+figure {
+  position: relative;
+  /* display: inline-block; */
+      display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+figure div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.75);
+  display: inline-block;
+  color: #fff;
+  padding: 8px;
+}
+
+figure div p {
+  font-size: 16px;
+  line-height: 16px;
+  overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+figure div p + p {
+  font-size: 12px;
+  line-height: 12px;
+  overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ranking {
+      display: grid;
+    grid-template-columns: 1fr 0.5fr 0.5fr;
+    grid-template-rows: 0.5fr 0.5fr;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.rank {
+  width: 0;
+height: 0;
+border-style: solid;
+border-width: 70px 70px 0 0;
+border-color: #8C8C8C transparent transparent transparent;
+position: absolute;
+top: 0;
+left: 0;
+display: flex;
+z-index: 100;
+}
+
+.ranking li {
+  position: relative;
+}
+
+.ranking li:first-child {
+    grid-row-start: 1;
+    grid-row-end: span 2;
+    grid-column-start: 1;
+    grid-column-end: span 1
+}
+
+.ranking li:nth-of-type(2) {
+    grid-row-start: 1;
+    grid-row-end: span 1;
+    grid-column-start: 2;
+    grid-column-end: span 1
+}
+
+
+.ranking li:nth-of-type(3) {
+   grid-row-start: 1;
+    grid-row-end: span 1;
+    /* color: black; */
+    grid-column-start: 3;
+    grid-column-end: span 1;
+}
+
+
+.ranking li:nth-of-type(4) {
+   grid-column-start: 2;
+    grid-column-end: span 1;
+    grid-row-start: 2;
+    grid-row-end: span 1;
+}
+
+.ranking li:last-child {
+   grid-column-start: 3;
+    grid-column-end: span 1;
+    grid-row-start: 2;
+    grid-row-end: span 1;
+}
+
+.rank-btn {
+  background: #333;
+  border-top: 6px solid #E71212;
+  font-weight: bold;
+font-size: 20px;
+line-height: 20px;
+color: #FD306A;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 20px 20px;
+transition: .1s;
+cursor: pointer;
 }
 </style>

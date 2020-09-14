@@ -54,6 +54,7 @@ module.exports = {
         fz16: '16px',
         fz18: '18px',
         fz20: '20px',
+        fz24: '24px',
       },
       lineHeight: {
         lh12: '12px',

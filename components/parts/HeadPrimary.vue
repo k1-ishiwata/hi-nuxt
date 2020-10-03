@@ -17,17 +17,17 @@
 
 .head-primary .title {
   width: 290px;
+  color: #3b3b3b;
   font-size: theme('fontSize.fz20');
   line-height: theme('lineHeight.lh25');
-  color: #3b3b3b;
   @apply flex items-end font-bold
 }
 
-.head-primary /deep/ .lead {
+.head-primary /deep/ .lead {]
+  color: #888787;
   font-size: theme('fontSize.fz12');
   line-height: theme('lineHeight.lh16');
   @apply w-full pt-8;
-  color: #888787;
 }
 
 .head-primary /deep/ .image {

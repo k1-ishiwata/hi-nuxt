@@ -1,92 +1,22 @@
 <template>
-  <div class="wrapper">
-
-    <!-- <BreadcrumbList /> -->
-
-    <!-- <TopBanner>
-      <div slot="item"
-            v-for="images in banner"
-            :key="images.link"
-      >
-        <AppBanner :link="images.link"
-                    :src="images.src"
-                    :alt="images.alt"
-                    :width="images.width"
-                    :height="images.height"
-        />
-      </div>
-    </TopBanner> -->
-
-    <ButtonList>
-      <li v-for="link in link"
-          :key="link.id"
-          :link="link.id"
-          slot="item"
-      >
-        <AppButton>
-          <span slot="name">
-            ふつーのボタン
-          </span>
-        </AppButton>
-      </li>
-    </ButtonList>
-
-    <ButtonList>
-      <li v-for="link in link"
-          :key="link.id"
-          :link="link.id"
-          slot="item"
-      >
-        <AppAccentButton>
-          <span slot="name">
-            いろつきのボタン
-          </span>
-        </AppAccentButton>
-      </li>
-    </ButtonList>
-
-    <CheckBoxList>
-      <li v-for="item in checkboxItem"
-          :key="item.id"
-          slot="item"
-      >
-        <AppCheckBox v-if="item.isChecked === true"
-                      :id="item.id"
-                      :name="item.name"
-                      :isChecked="true"
-        >
-          <span slot="checkbox">
-            {{ item.item }}
-          </span>
-        </AppCheckBox>
-        <AppCheckBox v-else
-                      :id="item.id"
-                      :name="item.name"
-        >
-          <span slot="checkbox">
-            {{ item.item }}
-          </span>
-        </AppCheckBox>
-      </li>
-    </CheckBoxList>
-
+  <div class="main-wrapper">
+    <!-- {地方}エリアの風俗店を探す -->
     <section>
       <HeadSecondary :isButton="true">
-        <IconMap slot="icon"
-                class="icon fill-current"
-                width="20"
-                height="24"
+        <IconMap
+          slot="icon"
+          class="icon fill-current"
+          width="20"
+          height="24"
         />
         <template slot="title">
-          {地方}エリアの風俗店を探す
+          {関東}エリアの風俗店を探す
         </template>
-        <AppAccentButton slot="item"
-                         link="/"
-        >
-          <span slot="name">
-            詳細検索
-          </span>
-        </AppAccentButton>
+        <AppAccentButton
+          slot="item"
+          link="/"
+          name="詳細検索"
+        />
         <p slot="lead">
           各エリアの風俗情報をご紹介。お店や女の子検索もここから
         </p>
@@ -95,45 +25,46 @@
         <li v-for="prefecture in searchPrefecture"
             :key="prefecture.id"
         >
-          <AppImages :link="prefecture.link"
-                     :src="prefecture.src"
-                     :alt="prefecture.alt"
-                     :width="prefecture.width"
-                     :height="prefecture.height"
+          <AppImages
+            :link="prefecture.link"
+            :src="prefecture.src"
+            :alt="prefecture.alt"
+            :width="prefecture.width"
+            :height="prefecture.height"
           />
         </li>
       </ul>
     </section>
 
-    <!-- ランキング -->
+    <!-- {地方}の風俗ランキング -->
     <section>
       <HeadSecondary :isButton="true">
-        <IconCrown slot="icon"
-                class="icon fill-current"
-                width="22"
-                height="18"
+        <IconCrown
+          slot="icon"
+          class="icon fill-current"
+          width="22"
+          height="18"
         />
         <template slot="title">
-          {地方}の風俗ランキング
+          {関東}の風俗ランキング
         </template>
-        <AppAccentButton slot="item"
-                         link="/"
-        >
-          <span slot="name">
-            もっと見る
-          </span>
-        </AppAccentButton>
+        <AppAccentButton
+          slot="item"
+          link="/"
+          name="もっと見る"
+        />
         <p slot="lead">
           あなたのお気に入りのお店や女の子の順位をチェック！
         </p>
       </HeadSecondary>
       <AppTabs :isTitle="true">
         <li slot="item"
-            v-for="item in list"
+            v-for="item in navList"
             :key="item.id"
         >
-          <AppTabItem v-bind="item"
-                      v-model="currentId"
+          <AppTabItem
+            v-bind="item"
+            v-model="currentId"
           >
             <span slot="label">
               {{ item.label }}
@@ -148,91 +79,7 @@
         <div slot="contents"
              v-if="currentId === 'shop'"
         >
-          <!-- お店 -->
-          <ul class="ranking">
-            <li>
-              <a href="">
-                <AppRankingLabel>
-                  <template slot="rank">1</template>
-                </AppRankingLabel>
-                <figure>
-                  <p>
-                    <img src="https://placehold.jp/340x454.png" alt="">
-                  </p>
-                  <div >
-                    <p style="font-size: 24px;line-height: 24px;">wwwwwwwwwwwwwwwwwwwwwww</p>
-                    <p style="font-size: 14px;line-height: 20px;">aaaaaaaaaaaaaaa</p>
-                  </div>
-                </figure>
-              </a>
-            </li>
-
-            <li>
-              <a href="">
-                <figure>
-                  <p>
-                    <img src="https://placehold.jp/170x227.png" alt="">
-                  </p>
-                  <div>
-                    <p>wwwwwwwwwwwwwwwwwwwwwww</p>
-                    <p>aaaaaaaaaaaaaaa</p>
-                  </div>
-                </figure>
-              </a>
-            </li>
-
-            <li>
-              <a href="">
-                <figure>
-                  <p>
-                    <img src="https://placehold.jp/170x227.png" alt="">
-                  </p>
-                  <div>
-                    <p>wwwwwwwwwwwwwwwwwwwwwww</p>
-                    <p>aaaaaaaaaaaaaaa</p>
-                  </div>
-                </figure>
-              </a>
-            </li>
-
-            <li>
-              <a href="">
-                <figure>
-                  <p>
-                    <img src="https://placehold.jp/170x227.png" alt="">
-                  </p>
-                  <div>
-                    <p>wwwwwwwwwwwwwwwwwwwwwww</p>
-                    <p>aaaaaaaaaaaaaaa</p>
-                  </div>
-                </figure>
-              </a>
-            </li>
-
-            <li>
-              <a href="">
-                <figure>
-                  <p>
-                    <img src="https://placehold.jp/170x227.png" alt="">
-                  </p>
-                  <div>
-                    <p>wwwwwwwwwwwwwwwwwwwwwww</p>
-                    <p>aaaaaaaaaaaaaaa</p>
-                  </div>
-                </figure>
-              </a>
-            </li>
-          </ul>
-          <p>
-            <a class="rank-btn" href="">女の子ランキングをもっと見る</a>
-          </p>
-
-
-
-
-
-
-
+          お店
         </div>
         <div slot="contents"
              v-else-if="currentId === 'reviews'"
@@ -242,7 +89,87 @@
         <div slot="contents"
              v-else-if="currentId === 'girl'"
         >
-          女の子
+          <!-- 女の子 -->
+          <RankingList>
+            <li slot="item">
+              <a href="">
+                <AppRankingLabel>
+                  <template slot="rank">1</template>
+                </AppRankingLabel>
+                <AppCard :isInformation="true" :isRanking="true" :isGold="true" :isGirl="true">
+                  <img slot="image"
+                       src="@/assets/images/dummy/girl-01.jpg"
+                       alt=""
+                  >
+                  <template slot="name">LOI</template>
+                  <template slot="age">22</template>
+                  <template slot="area">新宿</template>
+                  <template slot="business">デリヘル</template>
+                </AppCard>
+              </a>
+            </li>
+            <li slot="item">
+              <a href="">
+                <AppCard :isInformation="true" :isRanking="true" :isGirl="true">
+                  <img slot="image"
+                       src="@/assets/images/dummy/girl-02.jpg"
+                       alt=""
+                  >
+                  <template slot="name">LOI</template>
+                  <template slot="age">22</template>
+                  <template slot="area">新宿</template>
+                  <template slot="business">デリヘル</template>
+                </AppCard>
+              </a>
+            </li>
+            <li slot="item">
+              <a href="">
+                <AppCard :isInformation="true" :isRanking="true" :isGirl="true">
+                  <img slot="image"
+                       src="@/assets/images/dummy/girl-03.jpg"
+                       alt=""
+                  >
+                  <template slot="name">LOI</template>
+                  <template slot="age">22</template>
+                  <template slot="area">新宿</template>
+                  <template slot="business">デリヘル</template>
+                </AppCard>
+              </a>
+            </li>
+            <li slot="item">
+              <a href="">
+                <AppCard :isInformation="true" :isRanking="true" :isGirl="true">
+                  <img slot="image"
+                       src="@/assets/images/dummy/girl-04.jpg"
+                       alt=""
+                  >
+                  <template slot="name">LOI</template>
+                  <template slot="age">22</template>
+                  <template slot="area">新宿</template>
+                  <template slot="business">デリヘル</template>
+                </AppCard>
+              </a>
+            </li>
+            <li slot="item">
+              <a href="">
+                <AppCard :isInformation="true" :isRanking="true" :isGirl="true">
+                  <img slot="image"
+                       src="@/assets/images/dummy/girl-05.jpg"
+                       alt=""
+                  >
+                  <template slot="name">LOI</template>
+                  <template slot="age">22</template>
+                  <template slot="area">新宿</template>
+                  <template slot="business">デリヘル</template>
+                </AppCard>
+              </a>
+            </li>
+          </RankingList>
+          <AppMoreButton link="/">
+            <span slot="name">
+              女の子ランキングをもっと見る
+            </span>
+          </AppMoreButton>
         </div>
         <div slot="contents"
              v-else-if="currentId === 'upmovie'"
@@ -252,45 +179,366 @@
       </AppTabContents>
     </section>
 
-    <div>
-      
-      
-    </div>
+    <!-- {地方}の風俗体験動画 -->
+    <section>
+      <HeadSecondary :isButton="true">
+        <IconMovie
+          slot="icon"
+          class="icon fill-current"
+          width="22"
+          height="16"
+        />
+        <template slot="title">
+          {関東}の風俗体験動画
+        </template>
+         <AppAccentButton
+          slot="item"
+          link="/"
+          name="もっと見る"
+        />
+        <p slot="lead">
+          風俗店が投稿した動画をチェック！
+        </p>
+      </HeadSecondary>
+      <ContentsCards :isTopMovie="true">
+        <li slot="item">
+          <a href="">
+            <AppCard :isTopMovie="true" :isMovie="true">
+              <img slot="image"
+                   src="@/assets/images/dummy/experience-movie-01.jpg"
+                   alt=""
+                   width="430"
+                   height="242"
+              >
+              <template slot="time">99:99</template>
+            </AppCard>
+          </a>
+          <div class="experience-movie-information">
+            <p class="name">
+              ウフフな40。ムフフな50。。（横浜ハレ系）
+            </p>
+            <p class="shop">
+              <span class="area">関内</span>
+              /
+              <span class="business">ファッションヘルス,SM･M性感</span>
+            </p>
+            <ul>
+              <li>
+                <AppHashtag　link="/"　name="巨乳" />
+              </li>
+              <li>
+                <AppHashtag　link="/"　name="3P" />
+              </li>
+              <li>
+                <AppHashtag　link="/"　name="フェラ" />
+              </li>
+              <li>
+                <AppHashtag　link="/"　name="ギャル" />
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li slot="item">
+            <a href="">
+              <AppCard :isTopMovie="true" :isMovie="false">
+                <img slot="image"
+                     src="@/assets/images/dummy/experience-movie-02.jpg"
+                     alt=""
+                     width="157"
+                     height="88"
+                >
+                <template slot="time">99:99</template>
+              </AppCard>
+            </a>
+        </li>
+        <li slot="item">
+            <a href="">
+              <AppCard :isTopMovie="true" :isMovie="false">
+                <img slot="image"
+                     src="@/assets/images/dummy/experience-movie-03.jpg"
+                     alt=""
+                     width="157"
+                     height="88"
+                >
+                <template slot="time">99:99</template>
+              </AppCard>
+            </a>
+        </li>
+        <li slot="item">
+            <a href="">
+              <AppCard :isTopMovie="true" :isMovie="false">
+                <img slot="image"
+                     src="@/assets/images/dummy/experience-movie-04.jpg"
+                     alt=""
+                     width="157"
+                     height="88"
+                >
+                <template slot="time">99:99</template>
+              </AppCard>
+            </a>
+        </li>
+        <li slot="item">
+            <a href="">
+              <AppCard :isTopMovie="true" :isMovie="false">
+                <img slot="image"
+                     src="@/assets/images/dummy/experience-movie-05.jpg"
+                     alt=""
+                     width="157"
+                     height="88"
+                >
+                <template slot="time">99:99</template>
+              </AppCard>
+            </a>
+        </li>
+      </ContentsCards>
+    </section>
 
+    <!-- {地方}の風俗体験マンガ -->
+    <section>
+      <HeadSecondary :isButton="true">
+        <IconBook slot="icon"
+                class="icon fill-current"
+                width="24"
+                height="19"
+        />
+        <template slot="title">
+          {関東}の風俗体験マンガ
+        </template>
+        <AppAccentButton
+          slot="item"
+          link="/"
+          name="もっと見る"
+        />
+        <p slot="lead">
+          様々な業種の体験プレイを元にマンガでご紹介！
+        </p>
+      </HeadSecondary>
+      <ContentsCards>
+        <li slot="item">
+          <a href="/">
+            <AppCard :isInformation="true" :isPprimary="true">
+              <img slot="image"
+                   src="@/assets/images/dummy/comic-01.jpg"
+                   alt=""
+                   width="324"
+                   height="243"
+              >
+              <template slot="name">店舗名が入るよ店舗名が入るよ店舗名が入るよ店舗名が入るよ</template>
+              <template slot="area">秋葉原</template>
+              <template slot="business">デリヘル,エステ･M性感</template>
+            </AppCard>
+          </a>
+        </li>
+        <li slot="item">
+          <a href="/">
+            <AppCard :isInformation="true" :isPprimary="true">
+              <img slot="image"
+                   src="@/assets/images/dummy/comic-02.jpg"
+                   alt=""
+                   width="324"
+                   height="243"
+              >
+              <template slot="name">店舗名が入るよ</template>
+              <template slot="area">秋葉原</template>
+              <template slot="business">デリヘル,エステ･M性感</template>
+            </AppCard>
+          </a>
+        </li>
+        <li slot="item">
+          <a href="/">
+            <AppCard :isInformation="true" :isPprimary="true">
+              <img slot="image"
+                   src="@/assets/images/dummy/comic-03.jpg"
+                   alt=""
+                   width="324"
+                   height="243"
+              >
+              <template slot="name">店舗名が入るよ</template>
+              <template slot="area">秋葉原</template>
+              <template slot="business">デリヘル,エステ･M性感</template>
+            </AppCard>
+          </a>
+        </li>
+        <li slot="item">
+          <a href="/">
+            <AppCard :isInformation="true" :isPprimary="true">
+              <img slot="image"
+                   src="@/assets/images/dummy/comic-04.jpg"
+                   alt=""
+                   width="324"
+                   height="243"
+              >
+              <template slot="name">店舗名が入るよ</template>
+              <template slot="area">秋葉原</template>
+              <template slot="business">デリヘル,エステ･M性感</template>
+            </AppCard>
+          </a>
+        </li>
+      </ContentsCards>
+    </section>
+
+    <!-- 地方トップスペシャル -->
+    <section class="special-banner">
+      <AppImages
+        :isSpecial="true"
+        src="https://placehold.jp/750x360.png"
+        alt=""
+        width="680"
+        height="326"
+      />
+    </section>
+
+    <!-- 風俗店の新着口コミ -->
+    <section>
+      <HeadSecondary :isButton="true">
+        <IconComment
+          slot="icon"
+          class="icon fill-current"
+          width="24"
+          height="21"
+        />
+        <template slot="title">
+          風俗店の新着口コミ
+        </template>
+        <AppAccentButton
+          slot="item"
+          link="/"
+          name="詳細検索"
+        />
+        <p slot="lead">
+          お店に行ったユーザーのリアルな口コミ情報をご紹介！
+        </p>
+      </HeadSecondary>
+      <ul>
+        <li v-for="item in reviewsItem"
+            :key="item.id"
+        >
+          <ReviewsItem
+            v-if="item.isGirl === false"
+            :isPost="true"
+            :datetime="item.datetime"
+            :date="item.date"
+            :title="item.title"
+            :reviews="item.reviews"
+            :reviewer="item.reviewer"
+            :rating="item.rating"
+            :number="item.number"
+            :name="item.name"
+            :area="item.area"
+            :bussines="item.bussines"
+            :src="item.src"
+            :alt="item.alt"
+          >
+
+            <p slot="rating" class="rating">
+            <!-- <IconStar 
+            class="icon fill-current"
+            width="24"
+            height="24"/> -->
+          
+          <IconStar
+          
+            v-for="i in 5"
+            :key="i"
+            :class="3 <= item.rating ? 'text-star-orange' : 'text-star-yellow'"
+            class="icon fill-current"
+            width="24"
+            height="24"/>
+
+
+          
+
+          </p>
+          
+
+          
+         
+          </ReviewsItem>
+          <ReviewsItem
+            v-else
+            :isGirl="true"
+            :isPost="true"
+            :datetime="item.datetime"
+            :date="item.date"
+            :title="item.title"
+            :reviews="item.reviews"
+            :reviewer="item.reviewer"
+            :number="item.number"
+            :name="item.name"
+            :age="item.age"
+            :shop="item.shop"
+            :area="item.area"
+            :bussines="item.bussines"
+            :src="item.src"
+            :alt="item.alt"
+          />
+        </li>
+      </ul>
+    </section>
+
+    <!-- 他の地方の風俗店を探す -->
+    <section>
+      <HeadSecondary :isButton="false">
+        <IconMap slot="icon"
+                class="icon fill-current"
+                width="20"
+                height="24"
+        />
+        <template slot="title">
+          他の地方の風俗店を探す
+        </template>
+      </HeadSecondary>
+      <ButtonList :isMargin="true">
+        <li v-for="region in regionLinks"
+            :key="region.id"
+            :link="region.id"
+            slot="item"
+        >
+          <AppAccentButton
+            v-if="region.id === 'kanto'"
+            :isActive="true"
+            :name="region.name"
+          />
+          <AppAccentButton
+            v-else
+            :name="region.name"
+          />
+      </li>
+    </ButtonList>
+    </section>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import BreadcrumbList from '~/components/modules/BreadcrumbList.vue'
-import CheckBoxList from '~/components/modules/CheckBoxList.vue'
 import ButtonList from '~/components/modules/ButtonList.vue'
+import ContentsCards from '~/components/modules/ContentsCards.vue'
+import ReviewsItem from '~/components/modules/ReviewsItem.vue'
+import RankingList from '~/components/modules/RankingList.vue'
 import AppButton from '~/components/parts/AppButton.vue'
 import AppAccentButton from '~/components/parts/AppAccentButton.vue'
 import AppTabs from '~/components/parts/AppTabs.vue'
 import AppImages from '~/components/parts/AppImages.vue'
-
-
-import AppCheckBox from '~/components/parts/AppCheckBox.vue'
-
-import HeadSecondary from '~/components/parts/HeadSecondary.vue'
 import AppTabItem from '~/components/parts/AppTabItem.vue'
 import AppTabContents from '~/components/parts/AppTabContents.vue'
 import AppRankingLabel from '~/components/parts/AppRankingLabel.vue'
-
-
+import AppCheckBox from '~/components/parts/AppCheckBox.vue'
+import HeadSecondary from '~/components/parts/HeadSecondary.vue'
+import AppMoreButton from '~/components/parts/AppMoreButton.vue'
+import AppCard from '~/components/parts/AppCard.vue'
+import AppHashtag from '~/components/parts/AppHashtag.vue'
 
 import IconMap from '~/components/icons/IconMap.vue'
 import IconCrown from '~/components/icons/IconCrown.vue'
-
-
-
+import IconMovie from '~/components/icons/IconMovie.vue'
+import IconBook from '~/components/icons/IconBook.vue'
+import IconComment from '~/components/icons/IconComment.vue'
+import IconStar from '~/components/icons/IconStar.vue'
+import IconStarHalf from '~/components/icons/IconStarHalf.vue'
+// import IconStarDisabled from '~/components/icons/IconStarDisabled.vue'
 
 export default {
   components: {
-    CheckBoxList,
     ButtonList,
-    BreadcrumbList,
     AppButton,
     AppAccentButton,
     AppCheckBox,
@@ -301,29 +549,95 @@ export default {
     AppTabContents,
     AppImages,
     IconCrown,
+    IconMovie,
+    IconBook,
+    IconComment,
     AppRankingLabel,
+    AppCard,
+    ReviewsItem,
+    AppMoreButton,
+    RankingList,
+    ContentsCards,
+    AppHashtag,
+    IconStar,
+    IconStarHalf,
 
   },
   data() {
     return {
       currentId: 'shop',
-      list: [
+      regionLinks: [
+        { id: 'hokkaido-tohoku', name: '北海道･東北', path: '/' },
+        { id: 'kanto', name: '関東', path: '/' },
+        { id: 'hokuriku', name: '北陸', path: '/' },
+        { id: 'koshinetsu', name: '甲信越', path: '/' },
+        { id: 'tokai', name: '東海', path: '/' },
+        { id: 'kansai', name: '関西', path: '/' },
+        { id: 'chugoku-shikoku', name: '中国･四国', path: '/' },
+        { id: 'kyushu-okinawa', name: '九州･沖縄', path: '/' },
+      ],
+      reviewsItem: [
+        {
+          id: '1',
+          datetime: '2020-09-24',
+          date: '09/24',
+          title: 'とても分かりやすく、初めてでもグッド!!',
+          reviews: 'ふらりと立ち寄るには少々もったいないと感じるお店でした。次はちゃんと調べて、お邪魔しようかと...',
+          reviewer: 'yuki0123',
+          number: '3',
+          rating: '3.5',
+          name: 'ファンタジー',
+          shop: '',
+          area: '池袋',
+          bussines: 'ファッションヘルス,イメクラ･コスプレ',
+          src: require('@/assets/images/dummy/review-01.jpg'),
+          alt: '',
+          path: '/',
+          isGirl: false,
+        },
+        {
+          id: '2',
+          datetime: '2020-09-24',
+          date: '09/24',
+          title: 'ポイント稼ぎも兼ねて投稿してみました。',
+          reviews: 'ふらりと立ち寄るには少々もったいないと感じるお店でした。次はちゃんと調べて、お邪魔しようかと...',
+          reviewer: 'まさよし',
+          number: '3',
+          rating: '5',
+          name: '完全密室 無抵抗',
+          shop: '',
+          area: '池袋',
+          bussines: 'ファッションヘルス,イメクラ･コスプレ',
+          src: require('@/assets/images/dummy/review-02.jpg'),
+          alt: '',
+          path: '/',
+          isGirl: false,
+        },
+        {
+          id: '3',
+          datetime: '2020-09-24',
+          date: '09/24',
+          title: '女の子も可愛く、コスパもよく最高でした♥',
+          reviews: 'ふらりと立ち寄るには少々もったいないと感じるお店でした。次はちゃんと調べて、お邪魔しようかと...',
+          reviewer: 'yuki0123',
+          number: '3',
+          rating: '4',
+          name: 'りこ',
+          age: '19',
+          shop: '横浜人妻デリヘル RE:PRESIDENT-プレジデント-',
+          area: '池袋',
+          bussines: 'ファッションヘルス,イメクラ･コスプレ',
+          src: require('@/assets/images/dummy/review-03.jpg'),
+          alt: '',
+          path: '/',
+          isGirl: true,
+        },
+      ],
+      navList: [
         { id: 'shop', label: 'お店', content: 'コンテンツ1' },
         { id: 'reviews', label: '口コミ', content: 'コンテンツ2' },
         { id: 'girl', label: '女の子', content: 'コンテンツ3' },
         { id: 'upmovie', label: '生動画', content: 'コンテンツ4' },
-      ],
-      isButton: false,
-      isTitle: false,
-      // isChecked: false,
-  
-      link: [
-        { id: '11111111'},
-        { id: '2222222'},
-      ],
-      checkboxItem: [
-        { id: 'aaa', name: 'aaa' , item: 'aaa', isChecked: true },
-        { id: 'bbb', name: 'bbb' , item: 'bbb', },
       ],
       banner: [
         {
@@ -408,158 +722,74 @@ export default {
       ],
     }
   },
-  computed: {
-    current() {
-      return this.list.find(el => el.id === this.currentId) || {}
-    },
-    currentPage() {
-      return [
-        {
-          path: '',
-          id: 'kanto',
-          name: this.$route.path,
-        },
-      ]
-    },
-  },
-  created() {
-    this.addBreadcrumbList(this.currentPage)
-  },
   methods: {
-    ...mapActions(['addBreadcrumbList'])
+    mouseOverAction(){
+        this.hoverFlag = true
+    },
+    mouseLeaveAction(){
+        this.hoverFlag = false
+    },
   },
 }
 </script>
 
 <style scoped>
-section + section {
-  margin-top: 20px;
+.main-wrapper section + section {
+  @apply mt-20;
 }
 
-.top-search-prefecture {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  margin: 1px;
+.main-wrapper .special-banner {
+  width: 680px;
+  height: 326px;
 }
 
-.top-search-prefecture > li + li {
-  border-left: 1px solid #E5E5E5;
+.main-wrapper .top-search-prefecture {
+  @apply flex items-center flex-no-wrap m-px;
 }
 
-
-figure {
-  position: relative;
-  /* display: inline-block; */
-      display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+.main-wrapper .top-search-prefecture > li + li {
+  border-left-color: #E5E5E5;
+  @apply border-l border-solid;
 }
 
-figure div {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0,0,0,0.75);
-  display: inline-block;
-  color: #fff;
-  padding: 8px;
+.main-wrapper .experience-movie-information {
+  width: 234px;
+  padding: 12px;
+  @apply absolute top-0 right-0;
 }
 
-figure div p {
-  font-size: 16px;
-  line-height: 16px;
-  overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+.main-wrapper .experience-movie-information {
+  top: 50%;
+  width: 234px;
+  transform: translateY(-50%);
+  @apply absolute right-0 pt-12 px-12;
 }
 
-figure div p + p {
-  font-size: 12px;
-  line-height: 12px;
-  overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+.main-wrapper .experience-movie-information .name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  font-size: theme('fontSize.fz18');
+  line-height: theme('lineHeight.lh18');
+  color: theme('colors.base');
+  @apply font-bold overflow-hidden;
 }
 
-.ranking {
-      display: grid;
-    grid-template-columns: 1fr 0.5fr 0.5fr;
-    grid-template-rows: 0.5fr 0.5fr;
-    background-color: white;
-    width: 100%;
-    height: 100%;
+.main-wrapper .experience-movie-information .shop {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  font-size: theme('fontSize.fz14');
+  line-height: theme('lineHeight.lh14');
+  color: theme('colors.base');
+  @apply mt-12 overflow-hidden;
 }
 
-.rank {
-  width: 0;
-height: 0;
-border-style: solid;
-border-width: 70px 70px 0 0;
-border-color: #8C8C8C transparent transparent transparent;
-position: absolute;
-top: 0;
-left: 0;
-display: flex;
-z-index: 100;
+.main-wrapper .experience-movie-information ul {
+  @apply flex flex-wrap items-center mt-20 -mr-4 -mb-4;
 }
 
-.ranking li {
-  position: relative;
-}
-
-.ranking li:first-child {
-    grid-row-start: 1;
-    grid-row-end: span 2;
-    grid-column-start: 1;
-    grid-column-end: span 1
-}
-
-.ranking li:nth-of-type(2) {
-    grid-row-start: 1;
-    grid-row-end: span 1;
-    grid-column-start: 2;
-    grid-column-end: span 1
-}
-
-
-.ranking li:nth-of-type(3) {
-   grid-row-start: 1;
-    grid-row-end: span 1;
-    /* color: black; */
-    grid-column-start: 3;
-    grid-column-end: span 1;
-}
-
-
-.ranking li:nth-of-type(4) {
-   grid-column-start: 2;
-    grid-column-end: span 1;
-    grid-row-start: 2;
-    grid-row-end: span 1;
-}
-
-.ranking li:last-child {
-   grid-column-start: 3;
-    grid-column-end: span 1;
-    grid-row-start: 2;
-    grid-row-end: span 1;
-}
-
-.rank-btn {
-  background: #333;
-  border-top: 6px solid #E71212;
-  font-weight: bold;
-font-size: 20px;
-line-height: 20px;
-color: #FD306A;
-display: flex;
-align-items: center;
-justify-content: center;
-padding: 20px 20px;
-transition: .1s;
-cursor: pointer;
+.main-wrapper .experience-movie-information ul > li {
+  @apply pr-4 pb-4;
 }
 </style>

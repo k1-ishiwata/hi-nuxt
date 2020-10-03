@@ -1,21 +1,11 @@
 <template>
-  <div>
-    <ul class="www">
+  <div class="app-tabs">
+    <ul>
       <slot name="item" />
-      <!-- <li>
-        <a class="tab-item" href="">111</a>
-      </li>
-      <li>
-        <a class="tab-item" href="">222</a>
-      </li>
-      <li>
-        <span class="tab-item item-active">333</span>
-      </li>
-      <li>
-        <a class="tab-item" href="">444</a>
-      </li> -->
     </ul>
-    <div class="www-d" v-if="isTitle">
+    <div class="tabs-label"
+         v-if="isTitle"
+    >
       <slot name="title" />
     </div>
   </div>
@@ -30,46 +20,40 @@ export default {
 </script>
 
 <style scoped>
-.www {
-  display: flex;
-  align-items: baseline;
-  position: relative;
+.app-tabs > ul {
+  @apply relative flex items-baseline;
 }
 
-.www::after {
+.app-tabs > ul::after {
   content: "";
-  position: absolute;
   bottom: -4px;
-  left: 0;
-  width: 100%;
   height: 4px;
-    background: #E81212;
+  background: theme('colors.active');
+  @apply absolute left-0 w-full flex items-baseline z-10;
 }
 
-.www /deep/ li {
+.app-tabs > ul /deep/ li {
   width: 25%;
 }
 
-.www /deep/ li  {
+.app-tabs > ul /deep/ li  {
   border-top: 2px solid #E0E0E0;
-    border-left: 1px solid #E0E0E0;
+  border-left: 1px solid #E0E0E0;
   border-right: 1px solid #E0E0E0;
 }
 
-.www /deep/ li:first-of-type   {
+.app-tabs > ul /deep/ li:first-of-type   {
   border-left: 2px solid #E0E0E0;
 }
 
-.www /deep/ li:last-of-type {
+.app-tabs > ul /deep/ li:last-of-type {
   border-right: 2px solid #E0E0E0;
 }
 
-.www-d {
-  background: #E81212;
-  color: #fff;
-  font-size: 18px;
-line-height: 18px;
-text-align: center;
-padding: 8px 8px;
+.app-tabs .tabs-label {
+  font-size: theme('fontSize.fz18');
+  line-height: theme('lineHeight.lh18');
+  background: theme('colors.active');
+  @apply py-8 px-8 text-center text-white;
 }
 </style>

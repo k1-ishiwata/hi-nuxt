@@ -9,7 +9,7 @@
 <style scoped>
 .header-guide-nav {
   min-height: 60px;
-  border-bottom-width: 5px;
+  border-bottom-width: theme('borderWidth.5');
   border-color: theme('colors.base');
   background: theme('colors.accent');
   @apply flex justify-center border-solid ;
@@ -39,19 +39,17 @@
   top: 50%;
   left: 0;
   transform: translateY(-50%);
+  @apply block absolute left-0
 }
 
 .header-guide-nav > ul /deep/ > li::after {
   content: "";
   width: 1px;
   height: 38px;
-  display: block;
   background: theme('colors.border-light-gray');
-  position: absolute;
-  top: 50%;
-  right: 0;
+  top: theme('inset.1/2');
   transform: translateY(-50%);
-  @apply absolute;
+  @apply block absolute right-0;
 }
 
 .header-guide-nav > ul /deep/ > li > a {
@@ -64,16 +62,10 @@
   @apply relative h-full flex items-center justify-center font-bold text-white no-underline;
 }
 
-/* .header-guide-nav > ul /deep/ > li:first-child > a {
-  border-color: theme('colors.border-light-gray');
-  @apply border-solid border-l-1;
-} */
-
 .header-guide-nav > ul /deep/ > li .icon-triangle {
-  position: absolute;
-    right: 8px;
-    bottom: 8px;
-    transform: rotate(90deg);
-  @apply 
+  right: 8px;
+  bottom: 8px;
+  transform: rotate(90deg);
+  @apply absolute;
 }
 </style>

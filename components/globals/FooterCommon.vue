@@ -7,9 +7,10 @@
             :key="footerNavLink.name"
         >
           <a :href="footerNavLink.path">
-            <IconArrow class="icon fill-current"
-                       width="12"
-                       height="12"
+            <IconArrow
+              class="icon fill-current"
+              width="12"
+              height="12"
             />
             {{ footerNavLink.name }}
           </a>
@@ -19,14 +20,12 @@
         <li v-for="informationLink in informationLinks"
             :key="informationLink.name"
         >
-          <AppAccentButton :isRounded="isRounded"
-                           :link="informationLink.path"
-                           class="fz16"
-          >
-            <span slot="name">
-              {{ informationLink.name }}
-            </span>
-          </AppAccentButton>
+          <AppAccentButton
+            :isRounded="true"
+            :link="informationLink.path"
+            :name="informationLink.name"
+            class="fz16"
+          />
         </li>
       </ul>
       <hr>
@@ -37,7 +36,7 @@
           >
             <AreaList>
               <li slot="index">
-                <FooterAreaIndex :isColon="isColon">
+                <FooterAreaIndex :isColon="true">
                   <template slot="colon">
                     {{ area.region }}
                   </template>
@@ -63,14 +62,15 @@
             </template>
           </FooterSearchIndex>
           <template v-for="area in areaList">
-            <AreaList v-for="prefecture in area.prefecture"
-                            :key="prefecture.id"
+            <AreaList
+              v-for="prefecture in area.prefecture"
+              :key="prefecture.id"
             >
               <template v-if="area.id === 'kanto'">
                 <li slot="index"
                     class="w-full"
                 >
-                  <FooterAreaIndex :isParentheses="isParentheses">
+                  <FooterAreaIndex :isParentheses="true">
                     <template slot="parentheses">
                       {{ prefecture.name }}
                     </template>
@@ -89,7 +89,7 @@
           </template>
         </div>
         <div slot="contents">
-          <div  v-for="shop in searchShop"
+          <div v-for="shop in searchShop"
                :key="shop.name"
           >
             <FooterSearchIndex>
@@ -102,12 +102,13 @@
                  :key="area.id"
                  class="item"
             >
-              <AreaList v-for="prefecture in area.prefecture"
-                              :key="prefecture.id"
+              <AreaList
+                v-for="prefecture in area.prefecture"
+                :key="prefecture.id"
               >
                 <template v-if="area.id === 'kanto'">
                   <li slot="index">
-                    <FooterAreaIndex :isParentheses="isParentheses">
+                    <FooterAreaIndex :isParentheses="true">
                       <template slot="parentheses">
                         {{ prefecture.name }}
                       </template>
@@ -143,7 +144,6 @@ import AreaList from '~/components/globals/AreaList.vue'
 import AppAccentButton from '~/components/parts/AppAccentButton.vue'
 import IconArrow from '~/components/icons/IconArrow.vue'
 
-
 export default {
   components: {
     FooterGuideList,
@@ -156,9 +156,6 @@ export default {
   },
   data() {
     return {
-      isRounded: true,
-      isColon: true,
-      isParentheses: true,
       nowYear: '',
       logoAlt: '風俗情報ぴゅあらば',
       footerNavLinks: [
@@ -328,6 +325,57 @@ export default {
             { id: 'ishikawa', name: '石川', path: '/' },
             { id: 'toyama', name: '富山', path: '/' },
             { id: 'hukui', name: '福井', path: '/' },
+          ]
+        },
+        {
+          id: 'tokai',
+          region: '東海',
+          prefecture: [
+            { id: 'aichi', name: '愛知', path: '/' },
+            { id: 'gihu', name: '岐阜', path: '/' },
+            { id: 'sizuoka', name: '静岡', path: '/' },
+            { id: 'mie', name: '三重', path: '/' },
+          ]
+        },
+        {
+          id: 'kansai',
+          region: '関西',
+          prefecture: [
+            { id: 'osaka', name: '大阪', path: '/' },
+            { id: 'hyogo', name: '兵庫', path: '/' },
+            { id: 'kyoto', name: '京都', path: '/' },
+            { id: 'shiga', name: '滋賀', path: '/' },
+            { id: 'nara', name: '奈良', path: '/' },
+            { id: 'wakayama', name: '和歌山', path: '/' },
+          ]
+        },
+        {
+          id: 'chugoku-shikoku',
+          region: '中国･四国',
+          prefecture: [
+            { id: 'hiroshima', name: '広島', path: '/' },
+            { id: 'okayama', name: '岡山', path: '/' },
+            { id: 'yamaguchi', name: '山口', path: '/' },
+            { id: 'tottori', name: '鳥取', path: '/' },
+            { id: 'shimane', name: '島根', path: '/' },
+            { id: 'kagawa', name: '香川', path: '/' },
+            { id: 'ehime', name: '愛媛', path: '/' },
+            { id: 'kochi', name: '高知', path: '/' },
+            { id: 'tokushima', name: '徳島', path: '/' },
+          ]
+        },
+        {
+          id: 'kyushu-okinawa',
+          region: '九州･沖縄',
+          prefecture: [
+            { id: 'fukuoka', name: '福岡', path: '/' },
+            { id: 'saga', name: '佐賀', path: '/' },
+            { id: 'nagasaki', name: '長崎', path: '/' },
+            { id: 'oita', name: '大分', path: '/' },
+            { id: 'kumamoto', name: '熊本', path: '/' },
+            { id: 'miyazaki', name: '宮崎', path: '/' },
+            { id: 'kagoshima', name: '鹿児島', path: '/' },
+            { id: 'okinawa', name: '沖縄', path: '/' },
           ]
         },
       ],

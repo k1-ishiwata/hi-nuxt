@@ -2,6 +2,7 @@
 export default {
   mode: 'universal',
   // target: 'server',
+  base: process.env.BASE_URL,
   /*
   ** headタグ、OGPなどサイト全体の共通設定
   */
@@ -17,7 +18,7 @@ export default {
     ]
   },
   /*
-  ** プログレスバーの設定
+  ** プログレスバーの設定4444
   */
   loading: { color: '#fff' },
   /*
@@ -30,7 +31,6 @@ export default {
   */
   plugins: [
     { src: '~/plugins/vue-lazyload.js' },
-    { src: '~/plugins/vue-dropdown-menu.js', mode: 'client' },
   ],
   /*
   ** Auto import components
@@ -53,7 +53,8 @@ export default {
   ** CSS圧縮の設定
   */
   purgeCSS: {
-    enabled: ({ isDev, isClient }) => (!isDev && isClient),
+    // enabled: ({ isDev, isClient }) => (!isDev && isClient),
+    enabled:  process.env.NODE_ENV == 'production' ? true : false ,
     paths: [
       'components/**/*.vue',
       'layouts/**/*.vue',
@@ -73,5 +74,13 @@ export default {
   ** ビルド時の設定
   */
   build: {
-  }
+  },
+  /*
+  ** 動的なルーティングの設定
+  */
+  generate: {
+    routes: [
+      '/kanto/',
+    ]
+  },
 }

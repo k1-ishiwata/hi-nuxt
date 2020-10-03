@@ -19,56 +19,39 @@ export default {
 </script>
 
 <style scoped>
-.head-column {
-  /* position: relative; */
-}
-
 .head-column .column-wrapper {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-     padding: 8px 12px;
-    /* border: 4px solid #FD306A; */
-
-position: relative;
-background: #FD306A;
+  background: theme('colors.accent');
+  @apply relative flex items-center py-8 px-12 font-bold;
 }
 
 .head-column .column-title {
-    color: #fff;
-    font-size: 16px;
-    line-height: 1.2;
+  line-height: 1.2;
+  font-size: theme('fontSize.fz16');
+  @apply text-white;
 }
 
 .head-column .column-title.fz-24 {
-    font-size: 24px;
+  font-size: theme('fontSize.fz24');
 }
 
 .head-column > .column-wrapper::before {
-      content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 20px 20px 0;
-    border-color: transparent #ffffff transparent transparent;
+  content: "";
+  width: 0;
+  height: 0;
+  border-width: 0 20px 20px 0;
+  border-color: transparent #ffffff transparent transparent;
+  @apply absolute top-0 right-0 border-solid;
 }
 
 .head-column /deep/ .icon {
-      flex-shrink: 0;
-  margin-right: 4px;
-  color: #fff;
+  flex-shrink: 0;
+  @apply mr-4 text-white;
 }
 
 .head-column /deep/ p {
-  font-size: 12px;
   line-height: 1;
-  padding: 8px 12px;
-  background: #333;
-  display: flex;
-  align-items: center;
-    color: #fff;
+  font-size: theme('fontSize.fz12');
+  background: theme('colors.base');
+  @apply flex items-center text-white py-8 px-12;
 }
 </style>

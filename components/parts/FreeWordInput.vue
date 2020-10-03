@@ -1,18 +1,12 @@
 <template>
-  <p class="free-word-input">
-    <input type="text"
-           :placeholder="placeholder"
-    >
-  </p>
+  <input type="text"
+         class="free-word-input"
+         :placeholder="placeholder"
+  >
 </template>
 
 <script>
-import IconSearch from '~/components/icons/IconSearch.vue'
-
 export default {
-  components: {
-    IconSearch,
-  },
   props: {
     placeholder: String,
   },
@@ -21,16 +15,11 @@ export default {
 
 <style scoped>
 .free-word-input {
-  @apply w-full h-full;
-}
-
-.free-word-input input {
   padding: 1px 0;
+  border-color:theme('colors.border-word-input');
   font-size: theme('fontSize.fz14');
   line-height: theme('lineHeight.lh20');
-  @apply w-full h-full flex items-center px-20 border-solid border-2  text-center bg-white;
-  border: 2px solid #E2E2E2;
-  color: #333;
-  outline: 0;
+  color: theme('colors.base');
+  @apply w-full h-full flex items-center px-20 border-solid border-2 text-center bg-white outline-none;
 }
 </style>

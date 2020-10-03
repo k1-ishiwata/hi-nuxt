@@ -19,7 +19,6 @@
 }
 
 .footer-contents-list /deep/ .item {
-  display:flex;
-  flex-wrap:wrap;
+  @apply flex flex-wrap;
 }
 </style>

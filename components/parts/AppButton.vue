@@ -1,5 +1,7 @@
 <template>
-  <a class="app-button" :href="link">
+  <a class="app-button"
+     :href="link"
+  >
     <slot name="name" />
   </a>
 </template>

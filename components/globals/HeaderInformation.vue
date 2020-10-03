@@ -1,8 +1,8 @@
 <template>
   <div class="header-information">
-    <slot name="shop" />店舗
-    <slot name="girl" />女の子
-    <slot name="reviews" />口コミ
+    <span>{{ shop }}</span>店舗
+    <span>{{ girl }}</span>女の子
+    <span>{{ reviews }}</span>口コミ
   </div>
 </template>
 

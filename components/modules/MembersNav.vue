@@ -1,27 +1,31 @@
 <template>
   <ul class="members-nav">
     <li>
-      <AppAccentButton :isIcon="isIcon"
-                       :isHead="isHead"
+      <AppAccentButton
+        :isIcon="true"
+        :isHead="true"
+        name="ログイン"
       >
-        <IconKey slot="icon"
-                 class="icon fill-current"
-                 width="16"
-                 height="16"
-          />
-        <span slot="name">ログイン</span>
+        <IconKey
+          slot="icon"
+          class="icon fill-current"
+          width="16"
+          height="16"
+        />
       </AppAccentButton>
     </li>
     <li>
-      <AppAccentButton :isIcon="isIcon"
-                       :isHead="isHead"
+      <AppAccentButton
+        :isIcon="true"
+        :isHead="true"
+        name="会員登録"
       >
-        <IconPen slot="icon"
-                 class="icon fill-current"
-                 width="16"
-                 height="16"
-          />
-        <span slot="name">会員登録</span>
+        <IconPen
+          slot="icon"
+          class="icon fill-current"
+          width="16"
+          height="16"
+        />
       </AppAccentButton>
     </li>
   </ul>
@@ -37,12 +41,6 @@ export default {
     AppAccentButton,
     IconKey,
     IconPen,
-  },
-  data() {
-    return {
-      isHead: true,
-      isIcon: true,
-    }
   },
 }
 </script>

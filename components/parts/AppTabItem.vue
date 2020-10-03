@@ -26,43 +26,39 @@ export default {
 
 <style scoped>
 .app-tab-item {
-  font-size: 20px;
-  line-height: 20px;
+  font-size: theme('fontSize.fz20');
+  line-height: theme('lineHeight.lh20');
   @apply inline-block w-full py-16 px-16 text-black bg-white font-bold text-center duration-100 cursor-pointer;
 }
 
 .app-tab-item:hover {
-  z-index: 10;
-   background: #E81212;
-  @apply relative text-white;
+  background: theme('colors.active');
+  @apply relative text-white z-10;
 }
 
 .app-tab-item.tab-active  {
-  background: #E81212;
+  background: theme('colors.active');
   transition: 0;
-  z-index: 10;
-  @apply relative text-white cursor-default;
+  @apply relative text-white cursor-default z-10;
 }
 
 .app-tab-item.tab-active::before  {
-    content: "";
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    background: #E81212;
-    bottom: 0;
-    position: absolute;
-    z-index: -1;
+  content: "";
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  z-index: -1;
+  background: theme('colors.active');
+  @apply absolute bottom-0;
 }
 
 .app-tab-item:hover::before  {
-    content: "";
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    background: #E81212;
-    bottom: 0;
-    position: absolute;
-    z-index: -1;
+  content: "";
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  z-index: -1;
+  background: theme('colors.active');
+  @apply absolute bottom-0;
 }
 </style>

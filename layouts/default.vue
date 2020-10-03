@@ -8,11 +8,13 @@
              v-for="image in banner"
              :key="image.id"
         >
-          <AppImages :link="image.link"
-                     :src="image.src"
-                     :alt="image.alt"
-                     :width="image.width"
-                     :height="image.height"
+          <AppImages
+            :isBanner="true"
+            :link="image.link"
+            :src="image.src"
+            :alt="image.alt"
+            :width="image.width"
+            :height="image.height"
           />
         </div>
       </TopBanner>
@@ -54,16 +56,16 @@ export default {
         {
           id: '1',
           link:'/',
-          src: 'https://placehold.jp/640x160.png',
-          alt: 'aaa',
+          src: require('@/assets/images/banner/gold-platinum-class.jpg'),
+          alt: '',
           width: '640',
           height: '160',
         },
         {
           id: '2',
           link:'/',
-          src: 'https://placehold.jp/24/cc9999/993333/640x160.png',
-          alt: 'bbb',
+          src: require('@/assets/images/banner/himitsu-club-rin.jpg'),
+          alt: '',
           width: '640',
           height: '160',
         },
@@ -77,7 +79,7 @@ export default {
         {
           path: '',
           id: '',
-          name: this.$route.path,
+          name: '関東',
         },
       ]
     },
@@ -95,8 +97,8 @@ export default {
 body {
   color: theme('colors.base');
   font-family: theme('fontFamily.default');
-  word-break: break-all;
   word-wrap: break-word;
+  @apply break-all
 }
 
 *,
@@ -106,7 +108,7 @@ body {
 }
 
 .wrapper-common {
-  padding: 36px 0;
+  padding: 36px 0 120px 0;
   width: theme('width.wrapper-common');
   @apply relative flex flex-wrap mx-auto my-0;
 }

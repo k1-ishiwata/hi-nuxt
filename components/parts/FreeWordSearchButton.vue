@@ -1,5 +1,5 @@
 <template>
-  <p class="free-word-search-button">
+  <span class="free-word-search-button">
     <IconSearch class="icon fill-current"
                 width="22"
                 height="22"
@@ -8,7 +8,7 @@
            value=""
            :class="{ 'w-30' : isWidth }"
     >
-  </p>
+  </span>
 </template>
 
 <script>

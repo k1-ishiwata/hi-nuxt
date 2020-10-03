@@ -13,8 +13,7 @@
 }
 
 .header-guide-nav-drop.isOpen {
-  display: block;
-  z-index: 10;
+  @apply block z-10;
 }
 
 .header-guide-nav-drop /deep/ > li + li {
@@ -23,7 +22,6 @@
 }
 
 .header-guide-nav-drop /deep/ > li > a {
-  line-height: 30px;
   font-size: theme('fontSize.fz13');
   line-height: theme('lineHeight.lh30');
   color: theme('colors.base');

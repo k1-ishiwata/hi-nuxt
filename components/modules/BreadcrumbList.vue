@@ -1,35 +1,35 @@
 <template>
   <ul class="breadcrumb-list">
-    <li itemprop="itemListElement"
-        itemscope="itemscope"
-				itemtype="https://schema.org/ListItem"
+		<li itemprop="itemListElement"
+			itemscope="itemscope"
+			itemtype="https://schema.org/ListItem"
 		>
 			<a href="/"
-				 itemprop="item"
+			itemprop="item"
 			>
 				<span itemprop="name">
 					ぴゅあらば
 				</span>
 				<meta itemprop="position"
-							content="1"
+					content="1"
 				/>
 			</a>
-    </li>
-    <li v-for="(page, index) in breadcrumbList"
-				:key="index"
-				itemprop="itemListElement"
-				itemscope="itemscope"
-				itemtype="https://schema.org/ListItem"
+		</li>
+		<li v-for="(page, index) in breadcrumbList"
+			:key="index"
+			itemprop="itemListElement"
+			itemscope="itemscope"
+			itemtype="https://schema.org/ListItem"
 		>
 			<span v-if="page.path === ''"
-						itemprop="item"
-						class="disabled"
+				itemprop="item"
+				class="disabled"
 			>
 				<span itemprop="name">
 					{{ page.name }}
 				</span>
 				<meta itemprop="position"
-							:content="index + 2"
+					:content="index + 2"
 				/>
 			</span>
 			<a v-else
@@ -40,11 +40,11 @@
 					{{ page.name }}
 				</span>
 				<meta itemprop="position"
-							:content="index + 2"
+						:content="index + 2"
 				/>
 			</a>
-    </li>
-  </ul> 
+		</li>
+	</ul> 
 </template>
 
 <script>
@@ -60,9 +60,7 @@ export default {
 
 <style scoped>
 .breadcrumb-list {
-	/* width: theme('width.wrapper-common'); */
 	line-height: theme('lineHeight.lh12');
-	/* @apply flex items-center mx-auto my-0 py-14; */
 	padding: 11px 0;
 	@apply absolute top-0 left-0 right-0 flex items-center;
 }

@@ -9,7 +9,7 @@
 <style scoped>
 .header-guide-nav {
   min-height: 60px;
-  border-bottom-width: 5px;
+  border-bottom-width: theme('borderWidth.5');
   border-color: theme('colors.base');
   background: theme('colors.accent');
   @apply flex justify-center border-solid ;

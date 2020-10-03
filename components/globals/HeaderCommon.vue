@@ -1,20 +1,15 @@
 <template>
   <header class="header-common">
-    <div class="" style="display: flex;height: 25px;align-items: center;position:absolute;top:0;left:0;right:0;">
-      <HeaderInformation>
-        <span slot="shop">
-          {{ shop }}
-        </span>
-        <span slot="girl">
-          {{ girl }}
-        </span>
-        <span slot="reviews">
-          {{ reviews }}
-        </span>
-      </HeaderInformation>
+    <div class="header-top">
+      <HeaderInformation
+        :shop="shop"
+        :girl="girl"
+        :reviews="reviews"
+      />
       <div class="header-area-list">
-        <AreaList :class="{ 'region-list' : isTextChange }">
-          <li slot="item" v-for="regionLink in regionLinks"
+        <AreaList :class="{ 'region-list' : !isTextChange }">
+          <li slot="item"
+              v-for="regionLink in regionLinks"
               :key="regionLink.name"
           >
             <a :class="{ 'active' : regionLink.id === 'kanto'}"
@@ -33,8 +28,9 @@
         </li>
         <li>
           <form action="">
-            <FreeWordSearch :isWidth="isWidth"
-                            :placeholder="placeholder"
+            <FreeWordSearch
+              :isWidth="true"
+              :placeholder="placeholder"
             />
           </form>
         </li>
@@ -43,7 +39,10 @@
         </li>
       </ul>
       <HeadPrimary>
-        <a slot="image" class="image" href="/">
+        <a slot="image"
+           class="image"
+           href="/"
+        >
           <img src="~assets/images/logo-purelovers.png"
                alt="風俗情報ぴゅあらば"
                width="164"
@@ -51,10 +50,12 @@
           >
         </a>
         <template slot="title">
-          【関東】の<br>
+          {関東}の<br>
           風俗店情報
         </template>
-        <p slot="lead" class="lead">
+        <p slot="lead"
+           class="lead"
+        >
           {都道府県}・{都道府県}・{都道府県}など{関東}の安心して遊べるおすすめ風俗店情報をご紹介!デリヘルやソープ・セクキャバなどの割引クーポン・人気ランキング・体験動画・口コミ情報など風俗店探しに役立つコンテンツをご覧いただけます。
         </p>
       </HeadPrimary>
@@ -66,7 +67,11 @@
       >
         <template v-if="link.id === 'top'">
           <a :href="link.path">
-            <IconHome class="icon fill-current" width="30" height="28" />
+            <IconHome class="icon
+                      fill-current"
+                      width="30"
+                      height="28"
+            />
           </a>
         </template>
         <template v-else>
@@ -78,19 +83,30 @@
           <span v-else
                 class="drop-item"
                 @mouseover="mouseOver(index)"
-                @mouseleave="mouseLeave"
+                @mouseleave="mouseLeave()"
           >
             {{ link.name }}
-            <IconArrow class="icon-triangle icon fill-current" width="7" height="9" />
-            <HeaderGuideNavDrop v-show="isOpen && index === hoverIndex " :class="{isOpen}">
+            <IconArrow
+              class="icon-triangle icon fill-current"
+              width="7"
+              height="9"
+            />
+            <HeaderGuideNavDrop
+              v-show="isOpen && index === hoverIndex "
+              :class="{ isOpen }"
+            >
               <li slot="dropItem"
                   v-for="item in link.items"
                   :key="item.name"
               >
                 <a :href="item.path">
-                  <IconArrowAngle class="icon fill-current" width="7" height="9" />
+                  <IconArrowAngle
+                    class="icon fill-current"
+                    width="7"
+                    height="9"
+                  />
                   <span>
-                      {{ item.name }}
+                    {{ item.name }}
                   </span>
                 </a>
               </li>
@@ -106,6 +122,7 @@
 import HeaderGuideNav from '~/components/globals/HeaderGuideNav.vue'
 import HeaderGuideNavDrop from '~/components/globals/HeaderGuideNavDrop.vue'
 import HeaderInformation from '~/components/globals/HeaderInformation.vue'
+import AreaList from '~/components/globals/AreaList.vue'
 import FreeWordSearch from '~/components/modules/FreeWordSearch.vue'
 import MembersNav from '~/components/modules/MembersNav.vue'
 import NoUnderEighteen from '~/components/modules/NoUnderEighteen.vue'
@@ -116,7 +133,6 @@ import IconHome from '~/components/icons/IconHome.vue'
 import IconKey from '~/components/icons/IconKey.vue'
 import IconArrow from '~/components/icons/IconArrow.vue'
 import IconArrowAngle from '~/components/icons/IconArrowAngle.vue'
-import AreaList from '~/components/globals/AreaList.vue'
 
 export default {
   components: {
@@ -136,14 +152,11 @@ export default {
   },
   data() {
     return {
-      isTextChange: true,
-      isHead: true,
-      isIcon: true,
-      isWidth: true,
+      isTextChange: false,
       isOpen: false,
       hoverIndex: null,
       placeholder: 'フリーワード検索',
-      link: '',
+      link: '/',
       shop: '123',
       girl: '123,345',
       reviews: '123,456,789',
@@ -285,40 +298,34 @@ export default {
 
 <style scoped>
 .header-common {
-  /* min-height: 190px; */
-  border-top-width: 5px;
+  border-top-width: theme('borderWidth.5');
   border-color: theme('colors.base');
   @apply relative border-solid bg-white;
+}
+
+.header-common .header-top {
+  height: 25px;
+  @apply flex items-center absolute top-0 inset-x-0;
 }
 
 .header-common .header-area-list {
   width: 45.57%;
   height: 25px;
-  /* background-color: #333333; */
-  /* display: inline-block; */
-  /* position: absolute; */
-  /* top: 0; */
-  /* right: 0; */
-  padding: 0 40px;
-  @apply relative;
+  @apply relative px-40;
 }
 
 .header-common .header-area-list::before {
   content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: -1.64px;
-    left: 0;
-    display: inline-block;
-    background: #333;
-    transform: perspective(0.9em) rotateX(-2deg);
-    transform-origin: top right;
+  bottom: -1.64px;
+  background: theme('colors.base');
+  transform: perspective(2em) rotateX(-2deg);
+  transform-origin: top right;
+  @apply inline-block absolute top-0 inset-x-0
 }
 
 .header-common .wrapper {
   width: theme('width.wrapper-common');
-  @apply relative my-0 mx-auto pt-0 py-24 px-0;
+  @apply relative my-0 mx-auto pt-24 pb-20 px-0;
 }
 
 .header-common form {
@@ -339,7 +346,6 @@ export default {
 }
 
 .header-common .region-list > li > a {
-  color: #fff;
   font-size: theme('fontSize.fz12');
   @apply px-4 text-white border-solid border-r-1 border-white cursor-pointer;
 }
@@ -354,7 +360,7 @@ export default {
 
 .header-common .region-list a.active {
   color: theme('colors.accent');
-  pointer-events: none;
+  @apply pointer-events-none;
 }
 
 .header-common .region-list a:hover {
@@ -362,12 +368,11 @@ export default {
 }
 
 .header-common .region-list a.active:hover {
-  text-decoration: none;
-  cursor: auto;
+  @apply no-underline cursor-auto;
 }
 
 .header-common .region-list li:last-child > a {
-  @apply border-r-0 ;
+  @apply border-r-0;
 }
 
 .header-common .header-side-menu {

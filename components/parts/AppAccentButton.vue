@@ -4,6 +4,7 @@
               icon : isIcon,
               rounded : isRounded,
               head: isHead,
+              active: isActive,
              }"
      :href="link"
   >
@@ -12,7 +13,9 @@
     >
       <slot name="icon" />
     </span>
-    <slot name="name" />
+    <span>
+      {{ name }}
+    </span>
   </a>
 </template>
 
@@ -20,9 +23,11 @@
 export default {
   props: {
     link: String,
+    name: String,
     isHead: Boolean,
     isRounded: Boolean,
     isIcon: Boolean,
+    isActive: Boolean,
   },
 }
 </script>
@@ -37,12 +42,17 @@ export default {
   color: theme('colors.accent');
   border-color: theme('colors.accent');
   border-radius: theme('borderRadius.pills');
-  @apply relative flex items-center justify-center px-16 border border-solid font-bold bg-white cursor-pointer duration-100;
+  @apply relative flex items-center justify-center px-16 border border-solid bg-white cursor-pointer duration-100;
 }
 
 .app-accent-button:hover {
   background-color: theme('colors.accent');
   @apply text-white no-underline;
+}
+
+.app-accent-button.active {
+  background-color: theme('colors.accent');
+  @apply text-white no-underline cursor-default;
 }
 
 .app-accent-button .circle-icon {
@@ -66,8 +76,7 @@ export default {
 .app-accent-button.head {
   width: 116px;
   height: 30px;
-  padding-left: 36px;
-  /* @apply pl-36; */
+  @apply pl-36;
 }
 
 .app-accent-button.head .circle-icon {

@@ -337,7 +337,7 @@ export default {
 
 .left-column .sign-up a {
   transition: .1s;
-  background: theme('colors.bg-yellow');
+  background: theme('colors.yellow');
   font-size: theme('fontSize.fz15');
   line-height: theme('lineHeight.lh25');
   @apply flex items-center justify-center py-12 px-12 font-bold text-white cursor-pointer;
@@ -350,7 +350,7 @@ export default {
 .left-column .about-posting {
   border-color: #CAE0A0;
   transition: .1s;
-  background: theme('colors.bg-green');
+  background: theme('colors.green');
   @apply block border-2 border-solid text-white font-bold no-underline cursor-pointer;
 }
 
@@ -358,7 +358,7 @@ export default {
   line-height: 1.4;
   text-shadow: 1px 1px rgba(0,0,0,0.1);
   letter-spacing: -0.05em;
-  background: theme('colors.bg-green');
+  background: theme('colors.green');
   @apply relative py-12 px-12;
 }
 

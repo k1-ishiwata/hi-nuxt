@@ -1,6 +1,10 @@
 <template>
-  <div class="reviews-item">
-    <time v-if="isPost" :datetime="datetime">
+  <a class="reviews-item"
+     :href="link"
+  >
+    <time v-if="isPost"
+          :datetime="datetime"
+    >
       {{ date }}
       <span v-if="isPost" class="up">UP</span>
     </time>
@@ -8,24 +12,16 @@
     <p>{{ reviews }}</p>
     <div class="reviews">
       <div class="rating">
-        <!-- <slot name="rating" />
-        <span class="point">
-          <slot name="rating" />
-          {{ rating }}
-          
-        </span> -->
-      <slot name="rating" />
-            <span>
-           {{ rating }}
-
-          </span>
-
+        <slot name="rating" />
+        <span class="point">{{ rating }}</span>
       </div>
       <span class="reviewer">{{ reviewer }}({{ number }})</span>
     </div>
     <div class="reviews-thumbnail">
       <p>
-        <img :src="src" :alt="alt">
+        <img :src="src"
+             :alt="alt"
+        >
       </p>
       <div class="thumbnail-info">
         <p class="thumbnail-title">{{ name }}
@@ -39,12 +35,13 @@
         </p>
       </div>
     </div>
-  </div>
+  </a>
 </template>
 
 <script>
 export default {
   props: {
+    link: String,
     datetime: String,
     date: String,
     title: String,
@@ -71,7 +68,7 @@ export default {
   font-size: theme('fontSize.fz14');
   line-height: theme('lineHeight.lh14');
   border-bottom-color: theme('colors.border-horizontalrule');
-  @apply py-16 px-12 border-b border-solid bg-white;
+  @apply block py-16 px-12 border-b border-solid bg-white cursor-pointer;
 }
 
 .reviews-item time .up {
@@ -79,7 +76,7 @@ export default {
 }
 
 .reviews-item time + .reviews-title {
-   @apply mt-8
+  @apply mt-8
 }
 
 .reviews-item .reviews-title {
@@ -102,8 +99,20 @@ export default {
 }
 
 .reviews-item .reviews .rating {
+  margin-right: 6px;
   font-size: theme('fontSize.fz24');
   line-height: theme('lineHeight.lh24');
+}
+
+.reviews-item .reviews .rating /deep/ .icon + .icon {
+  @apply ml-4;
+}
+
+.reviews-item .reviews .rating .point {
+  font-size: theme('fontSize.fz24');
+  line-height: theme('lineHeight.lh24');
+  color:  theme('colors.red');
+  @apply font-bold;
 }
 
 .reviews-item .reviews .reviewer {

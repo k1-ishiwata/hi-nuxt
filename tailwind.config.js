@@ -5,12 +5,6 @@
 ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
 */
 module.exports = {
-  purge: [
-    'components/**/*.vue',
-    'layouts/**/*.vue',
-    'pages/**/*.vue',
-    'plugins/**/*.js'
-  ],
   future: {
     removeDeprecatedGapUtilities: true,
   },
@@ -51,9 +45,11 @@ module.exports = {
         'border-word-input': '#E2E2E2',
         'no-under-eighteen': '#747474',
         'parts-base': '#E0E0E0',
-        'bg-yellow': '#FFCC21',
-        'bg-green': '#70BE2A',
+        'yellow': '#FFCC21',
+        'green': '#70BE2A',
         'orange': '#FF7E00',
+        'red': '#FF0000',
+        'icon-gray': '#BDBDBD',
         'text-link': '#0F65D9',
       },
       // サイズ
@@ -74,6 +70,7 @@ module.exports = {
         fz20: '20px',
         fz24: '24px',
         fz30: '30px',
+        fz34: '34px',
       },
       lineHeight: {
         lh12: '12px',
@@ -88,6 +85,7 @@ module.exports = {
         lh25: '25px',
         lh30: '30px',
         lh32: '32px',
+        lh34: '34px',
       },
       borderWidth: {
         1: '1px',

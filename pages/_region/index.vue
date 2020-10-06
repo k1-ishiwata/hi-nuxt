@@ -93,74 +93,115 @@
           <RankingList>
             <li slot="item">
               <a href="">
-                <AppRankingLabel>
-                  <template slot="rank">1</template>
-                </AppRankingLabel>
-                <AppCard :isInformation="true" :isRanking="true" :isGold="true" :isGirl="true">
+                <AppRankingLabel
+                  rank="1"
+                  isGold="true"
+                  isNew="true"
+                />
+                <AppCard
+                  :isInformation="true"
+                  :isRanking="true"
+                  :isGold="true"
+                  :isGirl="true"
+                >
                   <img slot="image"
                        src="@/assets/images/dummy/girl-01.jpg"
                        alt=""
                   >
-                  <template slot="name">LOI</template>
+                  <span slot="name">LOI</span>
                   <template slot="age">22</template>
-                  <template slot="area">新宿</template>
-                  <template slot="business">デリヘル</template>
+                  <span slot="area">新宿</span>
+                  <span slot="business">デリヘル</span>
                 </AppCard>
               </a>
             </li>
             <li slot="item">
               <a href="">
-                <AppCard :isInformation="true" :isRanking="true" :isGirl="true">
+                <AppRankingLabel
+                  rank="2"
+                  isSilver="true"
+                  isUp="true"
+                />
+                <AppCard
+                  :isInformation="true"
+                  :isRanking="true"
+                  :isGirl="true"
+                >
                   <img slot="image"
                        src="@/assets/images/dummy/girl-02.jpg"
                        alt=""
                   >
-                  <template slot="name">LOI</template>
-                  <template slot="age">22</template>
-                  <template slot="area">新宿</template>
-                  <template slot="business">デリヘル</template>
+                  <span slot="name">みゆき</span>
+                  <template slot="age">18</template>
+                  <span slot="area">日暮里</span>
+                  <span slot="business">エステ･性感マッサージ</span>
                 </AppCard>
               </a>
             </li>
             <li slot="item">
               <a href="">
-                <AppCard :isInformation="true" :isRanking="true" :isGirl="true">
+                <AppRankingLabel
+                  rank="3"
+                  isBronze="true"
+                  isStay="true"
+                />
+                <AppCard
+                  :isInformation="true"
+                  :isRanking="true"
+                  :isGirl="true"
+                >
                   <img slot="image"
                        src="@/assets/images/dummy/girl-03.jpg"
                        alt=""
                   >
-                  <template slot="name">LOI</template>
-                  <template slot="age">22</template>
-                  <template slot="area">新宿</template>
-                  <template slot="business">デリヘル</template>
+                  <span slot="name">ハル</span>
+                  <template slot="age">19</template>
+                  <span slot="area">曙町</span>
+                  <span slot="business">エステ･性感マッサージ</span>
                 </AppCard>
               </a>
             </li>
             <li slot="item">
               <a href="">
-                <AppCard :isInformation="true" :isRanking="true" :isGirl="true">
-                  <img slot="image"
-                       src="@/assets/images/dummy/girl-04.jpg"
-                       alt=""
-                  >
-                  <template slot="name">LOI</template>
-                  <template slot="age">22</template>
-                  <template slot="area">新宿</template>
-                  <template slot="business">デリヘル</template>
-                </AppCard>
-              </a>
-            </li>
-            <li slot="item">
-              <a href="">
-                <AppCard :isInformation="true" :isRanking="true" :isGirl="true">
+                <AppRankingLabel
+                  rank="4"
+                  isDown="true"
+                />
+                <AppCard
+                  :isInformation="true"
+                  :isRanking="true"
+                  :isGirl="true"
+                >
                   <img slot="image"
                        src="@/assets/images/dummy/girl-05.jpg"
                        alt=""
                   >
-                  <template slot="name">LOI</template>
-                  <template slot="age">22</template>
-                  <template slot="area">新宿</template>
-                  <template slot="business">デリヘル</template>
+                  <span slot="name">ももこ</span>
+                  <template slot="age">23</template>
+                  <span slot="area">池袋</span>
+                  <span slot="business">ファッションヘルス</span>
+                </AppCard>
+              </a>
+            </li>
+            <li slot="item">
+              <a href="">
+                <AppRankingLabel
+                  rank="5"
+                  isNew="true"
+                />
+                <AppCard
+                  :isInformation="true"
+                  :isRanking="true"
+                  :isGirl="true"
+                >
+                  <img slot="image"
+                       src="@/assets/images/dummy/girl-04.jpg"
+                       alt=""
+                  >
+                  <span slot="name">美月ほむら</span>
+                  <template slot="age">18</template>
+                  <span slot="area">六本木</span>
+                  <span slot="business">デリヘル</span>
                 </AppCard>
               </a>
             </li>
@@ -323,9 +364,9 @@
                    width="324"
                    height="243"
               >
-              <template slot="name">店舗名が入るよ店舗名が入るよ店舗名が入るよ店舗名が入るよ</template>
-              <template slot="area">秋葉原</template>
-              <template slot="business">デリヘル,エステ･M性感</template>
+              <span slot="name">店舗名が入るよ店舗名が入るよ店舗名が入るよ店舗名が入るよ</span>
+              <span slot="area">秋葉原</span>
+              <span slot="business">デリヘル,エステ･M性感</span>
             </AppCard>
           </a>
         </li>
@@ -338,9 +379,9 @@
                    width="324"
                    height="243"
               >
-              <template slot="name">店舗名が入るよ</template>
-              <template slot="area">秋葉原</template>
-              <template slot="business">デリヘル,エステ･M性感</template>
+              <span slot="name">店舗名が入るよ</span>
+              <span slot="area">秋葉原</span>
+              <span slot="business">デリヘル,エステ･M性感</span>
             </AppCard>
           </a>
         </li>
@@ -353,9 +394,9 @@
                    width="324"
                    height="243"
               >
-              <template slot="name">店舗名が入るよ</template>
-              <template slot="area">秋葉原</template>
-              <template slot="business">デリヘル,エステ･M性感</template>
+              <span slot="name">店舗名が入るよ</span>
+              <span slot="area">秋葉原</span>
+              <span slot="business">デリヘル,エステ･M性感</span>
             </AppCard>
           </a>
         </li>
@@ -368,9 +409,9 @@
                    width="324"
                    height="243"
               >
-              <template slot="name">店舗名が入るよ</template>
-              <template slot="area">秋葉原</template>
-              <template slot="business">デリヘル,エステ･M性感</template>
+              <span slot="name">店舗名が入るよ</span>
+              <span slot="area">秋葉原</span>
+              <span slot="business">デリヘル,エステ･M性感</span>
             </AppCard>
           </a>
         </li>
@@ -416,6 +457,7 @@
           <ReviewsItem
             v-if="item.isGirl === false"
             :isPost="true"
+            :link="item.link"
             :datetime="item.datetime"
             :date="item.date"
             :title="item.title"
@@ -429,40 +471,46 @@
             :src="item.src"
             :alt="item.alt"
           >
-
-            <p slot="rating" class="rating">
-            <!-- <IconStar 
-            class="icon fill-current"
-            width="24"
-            height="24"/> -->
-          
-          <IconStar
-          
-            v-for="i in 5"
-            :key="i"
-            :class="3 <= item.rating ? 'text-star-orange' : 'text-star-yellow'"
-            class="icon fill-current"
-            width="24"
-            height="24"/>
-
-
-          
-
+          <p slot="rating" class="rating" v-if="item.id === '1'">
+            <IconStar
+              v-for="i in 3"
+              :key="i"
+              class="icon fill-current text-orange"
+              width="24"
+              height="24"
+            />
+            <IconStarHalf
+              class="icon fill-current text-orange"
+              width="24"
+              height="24"
+            />
+            <IconStar
+              class="icon fill-current text-icon-gray"
+              width="24"
+              height="24"
+            />
           </p>
-          
-
-          
-         
+          <p slot="rating" class="rating" v-if="item.id === '2'">
+            <IconStar
+              v-for="j in 5"
+              :key="j"
+              class="icon fill-current text-orange"
+              width="24"
+              height="24"
+            />
+          </p>
           </ReviewsItem>
           <ReviewsItem
             v-else
             :isGirl="true"
             :isPost="true"
+            :link="item.link"
             :datetime="item.datetime"
             :date="item.date"
             :title="item.title"
             :reviews="item.reviews"
             :reviewer="item.reviewer"
+            :rating="item.rating"
             :number="item.number"
             :name="item.name"
             :age="item.age"
@@ -471,7 +519,35 @@
             :bussines="item.bussines"
             :src="item.src"
             :alt="item.alt"
-          />
+          >
+            <p slot="rating" class="rating">
+              <IconStar
+                class="icon fill-current text-yellow"
+                width="24"
+                height="24"
+              />
+              <IconStar
+                class="icon fill-current text-yellow"
+                width="24"
+                height="24"
+              />
+              <IconStarHalf
+                class="icon fill-current text-yellow"
+                width="24"
+                height="24"
+              />
+              <IconStar
+              class="icon fill-current text-icon-gray"
+              width="24"
+              height="24"
+              />
+              <IconStar
+                class="icon fill-current text-icon-gray"
+                width="24"
+                height="24"
+              />
+            </p>
+          </ReviewsItem>
         </li>
       </ul>
     </section>
@@ -526,7 +602,6 @@ import HeadSecondary from '~/components/parts/HeadSecondary.vue'
 import AppMoreButton from '~/components/parts/AppMoreButton.vue'
 import AppCard from '~/components/parts/AppCard.vue'
 import AppHashtag from '~/components/parts/AppHashtag.vue'
-
 import IconMap from '~/components/icons/IconMap.vue'
 import IconCrown from '~/components/icons/IconCrown.vue'
 import IconMovie from '~/components/icons/IconMovie.vue'
@@ -534,7 +609,6 @@ import IconBook from '~/components/icons/IconBook.vue'
 import IconComment from '~/components/icons/IconComment.vue'
 import IconStar from '~/components/icons/IconStar.vue'
 import IconStarHalf from '~/components/icons/IconStarHalf.vue'
-// import IconStarDisabled from '~/components/icons/IconStarDisabled.vue'
 
 export default {
   components: {
@@ -579,13 +653,14 @@ export default {
       reviewsItem: [
         {
           id: '1',
+          link: '/',
           datetime: '2020-09-24',
           date: '09/24',
           title: 'とても分かりやすく、初めてでもグッド!!',
           reviews: 'ふらりと立ち寄るには少々もったいないと感じるお店でした。次はちゃんと調べて、お邪魔しようかと...',
           reviewer: 'yuki0123',
           number: '3',
-          rating: '3.5',
+          rating: '3.75',
           name: 'ファンタジー',
           shop: '',
           area: '池袋',
@@ -597,13 +672,14 @@ export default {
         },
         {
           id: '2',
+          link: '/',
           datetime: '2020-09-24',
           date: '09/24',
           title: 'ポイント稼ぎも兼ねて投稿してみました。',
           reviews: 'ふらりと立ち寄るには少々もったいないと感じるお店でした。次はちゃんと調べて、お邪魔しようかと...',
           reviewer: 'まさよし',
           number: '3',
-          rating: '5',
+          rating: '5.00',
           name: '完全密室 無抵抗',
           shop: '',
           area: '池袋',
@@ -615,13 +691,14 @@ export default {
         },
         {
           id: '3',
+          link: '/',
           datetime: '2020-09-24',
           date: '09/24',
           title: '女の子も可愛く、コスパもよく最高でした♥',
           reviews: 'ふらりと立ち寄るには少々もったいないと感じるお店でした。次はちゃんと調べて、お邪魔しようかと...',
           reviewer: 'yuki0123',
           number: '3',
-          rating: '4',
+          rating: '2.75',
           name: 'りこ',
           age: '19',
           shop: '横浜人妻デリヘル RE:PRESIDENT-プレジデント-',

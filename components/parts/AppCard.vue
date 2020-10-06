@@ -27,15 +27,11 @@
       <p class="shop"
          :class="{ 'first-place' : isGold }
       ">
-        <span>
-          <slot name="area" />
-        </span>
+        <slot name="area" />
         <span class="divider">
         /
         </span>
-        <span>
-          <slot name="business" />
-        </span>
+        <slot name="business" />
       </p>
     </div>
   </figure>
@@ -66,35 +62,27 @@ export default {
 
 .app-card.experience-movie::before {
   content: "▲";
-  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%) rotate(90deg);
   width: 51px;
   height: 51px;
+  padding-bottom: 6px;
   border-radius: 50%;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 31px;
-  /* line-height: 24px; */
-  display: flex;
-  align-items: center;
   background: rgba(0, 0, 0, 0.8);
-  justify-content: center;
-  z-index: 100;
   background: rgba(0, 0, 0, 0.8);
+  font-size: theme('fontSize.fz30');
+  @apply absolute flex items-center justify-center text-white z-10;
 }
 
 .app-card.experience-movie::after {
-   content: "";
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 87px;
-   height: 69px;
-    background-image: url(~assets/images/common/icon-experience-movie.png);
-    background-repeat: no-repeat;
-    background-size: 100% auto;
+  content: "";
+  width: 87px;
+  height: 69px;
+  background-image: url(~assets/images/common/icon-experience-movie.png);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  @apply absolute top-0 bottom-0;
 }
 
 .app-card.top-experience-movie .divider {
@@ -116,14 +104,14 @@ export default {
 
 .app-card.ranking .card-info .name {
   font-size: theme('fontSize.fz16');
-  line-height: theme('lineHeight.lh18');
+  line-height: theme('lineHeight.lh16');
   @apply font-bold truncate;
 }
 
 .app-card .card-info .name {
   font-size: theme('fontSize.fz14');
-  line-height: theme('lineHeight.lh20');
-  @apply font-bold truncate;
+  line-height: theme('lineHeight.lh14');
+  @apply pb-4 font-bold truncate;
 }
 
 .app-card .card-info .shop {

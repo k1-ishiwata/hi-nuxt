@@ -18,7 +18,7 @@ export default {
     ]
   },
   /*
-  ** プログレスバーの設定4444
+  ** プログレスバーの設定
   */
   loading: { color: '#fff' },
   /*
@@ -76,7 +76,7 @@ export default {
   build: {
   },
   /*
-  ** 動的なルーティングの設定
+  ** 動的なルーティングの設定(memo:別に設定必要)
   */
   generate: {
     routes: [
